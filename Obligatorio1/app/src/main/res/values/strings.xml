@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Obligatorio1</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Usuario">User</string>
+    <string name="boton">Login</string>
+    <string name="nombre">Name</string>
+    <string name="nuevaPartida">New Game</string>
+    <string name="nombreApp">Brainers</string>
+    <string name="chat">Chat</string>
+    <string name="Ingresocontraseña">Enter your Password</string>
+    <string name="contraseña1">This is the Password you will use for login</string>
+    <string name="continuar">Continue</string>
+    <string name="registro">Register</string>
+    <string name="mail">E-mail</string>
+    <string name="registroOK">Successfully Register</string>
+    <string name="finalizar">Done</string>
+    <string name="bienvenido">Welcome!</string>
+    <string name="correo">Enter your email address</string>
+    <string name="correo1">You will use this email address when you login \n and if you ever have to change the \n password</string>
+    <string name="olvido">Did you forget your password?</string>
+    <string name="registroNombre">What´s your name?</string>
+    <string name="registroNombre1">If you use your real name \n your friends will recognize you easier</string>
+    <string name="mensajeErrorEmpty">The fields cannot be blank</string>
+    <string name="Contraseña">Password</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_ventana_registro">VentanaRegistro</string>
+    <string name="title_activity_ventana_registro_mail">VentanaRegistroMail</string>
+    <string name="title_activity_ventana_registro_password">VentanaRegistroPassword</string>
+    <string name="title_activity_ventana_inicio">VentanaInicio</string>
+    <string name="title_activity_ventana_home">VentanaHome</string>
+    <string name="title_activity_ventana_desafios">VentanaDesafios</string>
+    <string name="title_activity_mi_perfil">MiPerfil</string>
+
+</resources>
