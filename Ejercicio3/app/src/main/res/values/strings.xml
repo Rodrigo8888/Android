@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ejercicio3</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <array name="Paises">
+        <tag>Uruguay</tag>
+        <tag>Brasil</tag>
+        <tag>Argentina</tag>
+        <tag>Chile</tag>
+        <tag>Paraguay</tag>
+        <tag>Colombia</tag>
+        <tag>Perú</tag>
+        <tag>Venezuela</tag>
+    </array>
+    <string name="title_activity_mostrar_datos">MostrarDatos</string>
+    <string name="title_activity_registro">Registro</string>
+
+</resources>

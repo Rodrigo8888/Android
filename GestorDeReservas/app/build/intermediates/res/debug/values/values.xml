@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/Colors.xml -->
+    <eat-comment />
+
+    <color name="FondoGestor">#D8D8D8</color>
+    <color name="blanco">#FFFFFF</color>
+    <color name="boton">#f23953</color>
+    <color name="datosUsuarios">#424242</color>
+    <color name="fondoBton">#e6f5f2</color>
+    <color name="fondoIngreso">#848484</color>
+    <color name="fondoUserPass">#00b7b9</color>
+    <!-- From: file:/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="GestorReserva">Reservas</string>
+    <string name="MiPanel">Mi Panel</string>
+    <string name="NombreApellido">Nombre Completo</string>
+    <string name="Noticias">Noticias</string>
+    <string name="Password">Contraseña</string>
+    <string name="RealizarReserva">Realizar Reserva</string>
+    <string name="Registro">Registrarse</string>
+    <string name="Usuario">Usuario</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Gestor de Reservas</string>
+    <string name="btnIngresar">Ingresar</string>
+    <string name="ci">Cédula</string>
+    <string name="ciguion">*La cédula debe ir sin el guión e incluír el dígito verificador</string>
+    <string name="email">E-mail</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="historial">Historial Reservas</string>
+    <string name="newUser">Usuario Nuevo</string>
+    <string name="newUsername">Nombre de Usuario</string>
+    <string name="title_activity_mi_panel">MiPanel</string>
+    <string name="title_activity_reservas">Reservas</string>
+    <string name="title_activity_ventana_ingreso">VentanaIngreso</string>
+    <string name="title_activity_ventana_registro">VentanaRegistro</string>
+    <!-- From: file:/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+</resources>

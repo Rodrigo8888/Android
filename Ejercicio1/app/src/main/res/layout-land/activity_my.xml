@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:background="@android:color/black"
+        android:layout_height="100dp"
+        android:id="@+id/linearLayout">
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:hint="@string/mensaje"
+            android:background="@android:color/white"
+            android:id="@+id/editText"
+/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buscar"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/button" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/linearLayout" />
+</RelativeLayout>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="21.0.0-rc1" >
+        <source path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0-rc1/res" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res" >
+            <file
+                name="ic_launcher"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="adelante"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/adelante.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="atras"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/atras.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="boton"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/boton.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="boton1"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/boton1.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="contacto"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/contacto.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="fondo1"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/fondo1.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="foto"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/foto.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="home"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/home.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="logo"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/logo.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="logog"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/logog.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="prop"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/prop.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="prop1"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/prop1.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="prop2"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/prop2.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="prop3"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/prop3.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="prop4"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/prop4.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="prop5"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/prop5.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="registrarse"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/registrarse.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="reserva"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/reserva.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="reserved"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/reserved.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="textbox"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-mdpi/textbox.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="activity_main"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/layout/activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_mi_panel"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/layout/activity_mi_panel.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_reservas"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/layout/activity_reservas.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_ventana_ingreso"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/layout/activity_ventana_ingreso.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_ventana_registro"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/layout/activity_ventana_registro.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/menu/main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="mi_panel"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/menu/mi_panel.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="reservas"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/menu/reservas.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="ventana_ingreso"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/menu/ventana_ingreso.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="ventana_registro"
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/menu/ventana_registro.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/Colors.xml"
+                qualifiers="" >
+                <color name="boton" >#f23953
+                </color>
+                <color name="FondoGestor" >#D8D8D8
+                </color>
+                <color name="blanco" >#FFFFFF
+                </color>
+                <color name="fondoUserPass" >#00b7b9
+                </color>
+                <color name="fondoBton" >#e6f5f2
+                </color>
+                <color name="datosUsuarios" >#424242
+                </color>
+                <color name="fondoIngreso" >#848484
+                </color>
+            </file>
+            <file
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string name="title_activity_reservas" >Reservas
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="email" >E-mail
+                </string>
+                <string name="title_activity_ventana_registro" >VentanaRegistro
+                </string>
+                <string name="NombreApellido" >Nombre Completo
+                </string>
+                <string name="ci" >Cédula
+                </string>
+                <string name="newUser" >Usuario Nuevo
+                </string>
+                <string name="Usuario" >Usuario
+                </string>
+                <string name="btnIngresar" >Ingresar
+                </string>
+                <string name="Registro" >Registrarse
+                </string>
+                <string name="GestorReserva" >Reservas
+                </string>
+                <string name="ciguion" >*La cédula debe ir sin el guión e incluír el dígito verificador
+                </string>
+                <string name="newUsername" >Nombre de Usuario
+                </string>
+                <string name="Noticias" >Noticias
+                </string>
+                <string name="Password" >Contraseña
+                </string>
+                <string name="RealizarReserva" >Realizar Reserva
+                </string>
+                <string name="app_name" >Gestor de Reservas
+                </string>
+                <string name="MiPanel" >Mi Panel
+                </string>
+                <string name="title_activity_mi_panel" >MiPanel
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+                <string name="historial" >Historial Reservas
+                </string>
+                <string name="title_activity_ventana_ingreso" >VentanaIngreso
+                </string>
+            </file>
+            <file
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values-v11/styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values-v14/styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/values-w820dp/dimens.xml"
+                qualifiers="w820dp-v13" >
+                <dimen name="activity_horizontal_margin" >64dp
+                </dimen>
+            </file>
+        </source>
+        <source path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/build/generated/res/rs/debug" />
+        <source path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/build/generated/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/debug/res" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,157 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gestordereservas.VentanaRegistro" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:weightSum="2"
+        android:layout_alignParentTop="true"
+        android:background="@color/FondoGestor"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="72dp"
+                android:layout_height="71dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/logog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/newUser"
+                android:textColor="@color/boton"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="360dp"
+        android:layout_alignParentLeft="true"
+        android:background="@color/fondoBton"
+        android:layout_below="@+id/linearLayout1"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/blanco"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/NombreApellido"
+            android:textColorHint="#BDBDBD"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/blanco"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/newUsername"
+            android:textColorHint="#BDBDBD"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/blanco"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/Password"
+            android:textColorHint="#BDBDBD"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/blanco"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/email"
+            android:textColorHint="#BDBDBD"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/blanco"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/ci"
+            android:textColorHint="#BDBDBD"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ciguion" />
+
+        <Button
+            android:id="@+id/registro"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@color/boton"
+            android:text="@string/Registro"
+            android:textColor="@color/blanco"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/userview"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/blanco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ciguion" />
+
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/Users/rpcosta/AndroidStudioProjects/GestorDeReservas/app/src/main/res/layout/activity_ventana_registro.xml -->

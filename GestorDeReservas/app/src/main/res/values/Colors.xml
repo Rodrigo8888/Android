@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blanco">#FFFFFF</color>
+    <color name ="boton">#f23953</color>
+    <color name = "FondoGestor">#D8D8D8</color>
+    <color name ="fondoUserPass">#00b7b9</color>
+    <color name ="datosUsuarios">#424242</color>
+    <color name ="fondoBton">#e6f5f2</color>
+    <color name ="fondoIngreso">#848484</color>
+</resources>
