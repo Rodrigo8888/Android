@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,14 +21,60 @@ public class Resultados extends Activity implements Datos {
     private ArrayList<Item> lista;
     private ListView miLista;
     private String query;
+    Button siguiente, atras;
+    private int offset;
+    private String paginas="&limit=15";
+    private String url;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        offset=0;
+        url= "https://api.mercadolibre.com/sites/MLA/search?q=";
         setContentView(R.layout.activity_resultados);
-        String url = "https://api.mercadolibre.com/sites/MLA/search?q=";
         Bundle b = getIntent().getExtras();
         query = b.getString("query");
+        siguiente=(Button)findViewById(R.id.button5);
+        atras = (Button)findViewById(R.id.button4);
+        siguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                url= "https://api.mercadolibre.com/sites/MLA/search?q=";
+                offset +=15;
+                miLista = (ListView) findViewById(R.id.listView1);
+                lista = new ArrayList<Item>();
+                adapter = new AdapterList(Resultados.this,R.id.listView1,lista);
+                miLista.setAdapter(adapter);
+                url += query+paginas+"&offset="+offset;
+                adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
+                new Busqueda(Resultados.this).execute(url);
+
+            }
+        });
+
+        atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(offset>=15) {
+                    url= "https://api.mercadolibre.com/sites/MLA/search?q=";
+                    offset -= 15;
+                    miLista = (ListView) findViewById(R.id.listView1);
+                    lista = new ArrayList<Item>();
+                    adapter = new AdapterList(Resultados.this,R.id.listView1,lista);
+                    miLista.setAdapter(adapter);
+                    url += query+paginas+"&offset="+offset;
+                    adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
+                    new Busqueda(Resultados.this).execute(url);
+
+                }
+                else {
+                    Toast msj = Toast.makeText(Resultados.this,"No hay más páginas atrás",Toast.LENGTH_SHORT);
+                    msj.show();
+                }
+            }
+        });
+
         if (savedInstanceState != null) {
             EditText texto = (EditText)findViewById(R.id.editText1);
             miLista = (ListView) findViewById(R.id.listView1);
@@ -34,12 +83,12 @@ public class Resultados extends Activity implements Datos {
             this.miLista.setAdapter(adapter);
 
         } else {
+            url += query+paginas+"&offset="+offset;
             // Probably initialize members with default values for a new instance
             miLista = (ListView) findViewById(R.id.listView1);
             lista = new ArrayList<Item>();
             adapter = new AdapterList(this, R.id.listView1, this.lista);
             this.miLista.setAdapter(adapter);
-            url += query;
             adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
             new Busqueda(this).execute(url);
         }
@@ -74,7 +123,6 @@ public class Resultados extends Activity implements Datos {
     @Override
     public void refreshList(final ArrayList<Item> items) {
         lista = items;
-
         adapter = new AdapterList(Resultados.this, R.id.listView1, items);
         miLista.setAdapter(adapter);
         adapter.notifyDataSetChanged();

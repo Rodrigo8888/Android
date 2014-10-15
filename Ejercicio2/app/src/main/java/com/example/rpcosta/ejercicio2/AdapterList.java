@@ -62,9 +62,9 @@ public class AdapterList extends ArrayAdapter<Item> {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
-            if (mHolder.position == mPosition) {
+
                 mHolder.image.setImageBitmap(bitmap);
-            }
+
         }
 
         @Override
@@ -106,6 +106,10 @@ public class AdapterList extends ArrayAdapter<Item> {
         }
         else {
             holder = (ViewHolder) convertView.getTag();
+            new ThumbnailTask(position, holder,item.getImage())
+                    .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+            convertView.setTag(holder);
+
         }
         holder.title.setText(item.getTitle());
         holder.price.setText("Precio: " + item.getPrice());
