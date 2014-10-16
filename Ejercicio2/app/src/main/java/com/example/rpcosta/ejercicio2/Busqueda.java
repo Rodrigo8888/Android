@@ -47,7 +47,7 @@ public class Busqueda extends AsyncTask<String, String, ArrayList<Item>> {
             listaItems = new ArrayList<Item>();
             for (int i = 0; i < lista.length(); i++) {
                 JSONObject item = (JSONObject) lista.get(i);
-                listaItems.add(new Item(item.getString("title"), item.getInt("price"), item.getString("subtitle"), item.getInt("available_quantity"),item.getString("thumbnail")));
+                listaItems.add(new Item(item.getString("title"), item.getInt("price"), item.getString("subtitle"), item.getInt("available_quantity"),item.getString("thumbnail"),item.getString("id")));
 
                 if (isCancelled()) break;
             }

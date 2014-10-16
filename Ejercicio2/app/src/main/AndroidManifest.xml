@@ -24,6 +24,12 @@
             android:name=".Resultados"
             android:label="@string/title_activity_resultados" >
         </activity>
+        <activity
+            android:name=".Descripcion"
+            android:label="@string/title_activity_descripcion" >
+        </activity>
     </application>
+
     <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

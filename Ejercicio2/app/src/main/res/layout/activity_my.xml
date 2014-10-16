@@ -7,6 +7,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
+        android:background="@android:color/darker_gray"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -14,9 +15,13 @@
         android:id="@+id/linearLayout">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_width="320dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/search"
+            android:background="@drawable/rounded"
             android:id="@+id/editText1"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
@@ -24,18 +29,21 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/linearLayout"
         android:layout_alignLeft="@+id/linearLayout"
+        android:background="@android:color/darker_gray"
         android:layout_alignStart="@+id/linearLayout"
         android:id="@+id/linear"
         android:longClickable="false">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search"
+            android:layout_width="320dp"
+            android:layout_height="35dp"
+            android:text="@string/boton"
             android:id="@+id/button1"
+            android:textSize="15sp"
+            android:background="@drawable/button"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>

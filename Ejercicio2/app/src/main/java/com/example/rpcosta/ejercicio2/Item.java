@@ -15,6 +15,15 @@ public class Item implements Serializable {
     private int price;
     private String subtitle;
     private int quantity;
+    private String identificador;
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
+    }
 
     public String getImage() {
         return image;
@@ -56,11 +65,12 @@ public class Item implements Serializable {
         this.price = price;
     }
 
-    public Item(String titulo, int precio, String subtitulo, int cantidad, String imagen) {
+    public Item(String titulo, int precio, String subtitulo, int cantidad, String imagen, String ident) {
         this.title = titulo;
         this.price = precio;
         this.subtitle = subtitulo;
         this.quantity = cantidad;
         this.image = imagen;
+        this.identificador= ident;
     }
 }

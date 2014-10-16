@@ -1,10 +1,15 @@
 package com.example.rpcosta.ejercicio2;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,75 +26,71 @@ public class Resultados extends Activity implements Datos {
     private ArrayList<Item> lista;
     private ListView miLista;
     private String query;
-    Button siguiente, atras;
     private int offset;
-    private String paginas="&limit=15";
+    private static final int max =15;
+    private String paginas = "&limit=15";
     private String url;
+    ProgressDialog dialogo = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        offset=0;
-        url= "https://api.mercadolibre.com/sites/MLA/search?q=";
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        offset = 0;
+        url = "https://api.mercadolibre.com/sites/MLA/search?q=";
         setContentView(R.layout.activity_resultados);
         Bundle b = getIntent().getExtras();
+        lista = new ArrayList<Item>();
         query = b.getString("query");
-        siguiente=(Button)findViewById(R.id.button5);
-        atras = (Button)findViewById(R.id.button4);
-        siguiente.setOnClickListener(new View.OnClickListener() {
+        miLista = (ListView) findViewById(R.id.listView1);
+        adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
+        miLista.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
-            public void onClick(View v) {
-                url= "https://api.mercadolibre.com/sites/MLA/search?q=";
-                offset +=15;
-                miLista = (ListView) findViewById(R.id.listView1);
-                lista = new ArrayList<Item>();
-                adapter = new AdapterList(Resultados.this,R.id.listView1,lista);
-                miLista.setAdapter(adapter);
-                url += query+paginas+"&offset="+offset;
-                adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
-                new Busqueda(Resultados.this).execute(url);
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
 
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem + visibleItemCount >= offset + max) {
+                    dialogo = ProgressDialog.show(Resultados.this, "", "Buscando...", true);
+                    url = "https://api.mercadolibre.com/sites/MLA/search?q=";
+                    offset += max;
+                    if(miLista.getAdapter()==null) {
+                        miLista.setAdapter(adapter);
+                    }
+                    url += query + paginas + "&offset=" + offset;
+                    new Busqueda(Resultados.this).execute(url);
+                }
             }
         });
 
-        atras.setOnClickListener(new View.OnClickListener() {
+        miLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                if(offset>=15) {
-                    url= "https://api.mercadolibre.com/sites/MLA/search?q=";
-                    offset -= 15;
-                    miLista = (ListView) findViewById(R.id.listView1);
-                    lista = new ArrayList<Item>();
-                    adapter = new AdapterList(Resultados.this,R.id.listView1,lista);
-                    miLista.setAdapter(adapter);
-                    url += query+paginas+"&offset="+offset;
-                    adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
-                    new Busqueda(Resultados.this).execute(url);
-
-                }
-                else {
-                    Toast msj = Toast.makeText(Resultados.this,"No hay más páginas atrás",Toast.LENGTH_SHORT);
-                    msj.show();
-                }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(Resultados.this,Descripcion.class);
+                i.putExtra("id",lista.get(position).getIdentificador());
+                startActivity(i);
             }
         });
 
         if (savedInstanceState != null) {
-            EditText texto = (EditText)findViewById(R.id.editText1);
+            EditText texto = (EditText) findViewById(R.id.editText1);
             miLista = (ListView) findViewById(R.id.listView1);
             lista = (ArrayList<Item>) savedInstanceState.getSerializable("Lista");
-            adapter = new AdapterList(this, R.id.listView1, this.lista);
-            this.miLista.setAdapter(adapter);
+            adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
+            miLista.setAdapter(adapter);
 
         } else {
-            url += query+paginas+"&offset="+offset;
-            // Probably initialize members with default values for a new instance
-            miLista = (ListView) findViewById(R.id.listView1);
             lista = new ArrayList<Item>();
-            adapter = new AdapterList(this, R.id.listView1, this.lista);
-            this.miLista.setAdapter(adapter);
             adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
+            url += query + paginas + "&offset=" + offset;
+            miLista = (ListView) findViewById(R.id.listView1);
+            if(miLista.getAdapter()==null) {
+                miLista.setAdapter(adapter);
+            }
+            dialogo = ProgressDialog.show(Resultados.this, "", "Buscando...", true);
             new Busqueda(this).execute(url);
         }
     }
@@ -107,11 +108,14 @@ public class Resultados extends Activity implements Datos {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; goto parent activity.
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -122,9 +126,16 @@ public class Resultados extends Activity implements Datos {
 
     @Override
     public void refreshList(final ArrayList<Item> items) {
-        lista = items;
-        adapter = new AdapterList(Resultados.this, R.id.listView1, items);
-        miLista.setAdapter(adapter);
+        dialogo.dismiss();
+        if (lista != null) {
+            lista.addAll(items);
+        }
+        else{
+            lista = items;
+        }
+        if(miLista.getAdapter()==null) {
+            miLista.setAdapter(adapter);
+        }
         adapter.notifyDataSetChanged();
     }
 
