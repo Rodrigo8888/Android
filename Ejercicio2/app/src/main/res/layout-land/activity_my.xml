@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyActivity">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="206dp"
+            android:layout_height="35dp"
+            android:text="@string/boton"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="25dp"
+            android:id="@+id/button1"
+            android:textSize="15sp"
+            android:background="@drawable/button"
+            android:layout_gravity="right|top"
+            android:layout_alignTop="@+id/editText"
+            android:layout_toRightOf="@+id/editText"
+            android:layout_toEndOf="@+id/editText" />
+
+        <EditText
+            android:layout_width="275dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:layout_marginLeft="25dp"
+            android:textSize="15sp"
+            android:layout_marginTop="25dp"
+            android:hint="@string/search"
+            android:background="@drawable/rounded"
+            android:id="@+id/editText1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="left|top" />
+    </FrameLayout>
+</RelativeLayout>
