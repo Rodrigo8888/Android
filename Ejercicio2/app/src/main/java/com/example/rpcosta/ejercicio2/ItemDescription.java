@@ -21,8 +21,9 @@ public class ItemDescription extends AsyncTask<String, String, Item> {
     private DatosItems dto;
     private Item it;
 
+
     public ItemDescription(DatosItems activity) {
-        dto = activity;
+        this.dto = activity;
     }
 
     @Override
@@ -38,11 +39,8 @@ public class ItemDescription extends AsyncTask<String, String, Item> {
             URL url = new URL(params[0]);
             URLConnection conection = url.openConnection();
             InputStream in = new BufferedInputStream(conection.getInputStream());
-            JSONObject json = new JSONObject(getResponseText(in));
-            JSONArray lista = json.getJSONArray("results");
-            JSONObject item = (JSONObject) lista.get(0);
+            JSONObject item = new JSONObject(getResponseText(in));
             it = new Item(item.getString("title"), item.getInt("price"), item.getString("subtitle"), item.getInt("available_quantity"), item.getString("thumbnail"), item.getString("id"));
-
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }

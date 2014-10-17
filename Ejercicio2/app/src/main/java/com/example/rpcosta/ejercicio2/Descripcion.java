@@ -17,6 +17,7 @@ public class Descripcion extends Activity implements DatosItems{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        titulo = (TextView)findViewById(R.id.textView1);
         setContentView(R.layout.activity_descripcion);
         imagen = (ImageView) findViewById(R.id.imageView);
         Bundle b = getIntent().getExtras();
@@ -24,8 +25,7 @@ public class Descripcion extends Activity implements DatosItems{
         url ="https://api.mercadolibre.com/items/";
         url +=id;
         new ItemDescription(Descripcion.this).execute(url);
-        titulo = (TextView)findViewById(R.id.textView1);
-        titulo.setText(i.getTitle());
+
     }
 
 
@@ -51,6 +51,8 @@ public class Descripcion extends Activity implements DatosItems{
 
     @Override
     public void refreshdatos(Item item) {
+        titulo = (TextView)findViewById(R.id.textView1);
         i = item;
+        titulo.setText(i.getTitle());
     }
 }
