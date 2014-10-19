@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class AdapterList extends ArrayAdapter<Item> {
     private ArrayList<Item> lista;
     private LayoutInflater inflater;
     private int resource;
+    private LruCache<String, Bitmap> mMemoryCache;
     Context actividad;
 
     public AdapterList(Context context, int resc, ArrayList<Item> objects) {
@@ -36,6 +38,16 @@ public class AdapterList extends ArrayAdapter<Item> {
         resource = resc;
         actividad = context;
         inflater = LayoutInflater.from(context);
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        final int cacheSize = maxMemory / 8;
+        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap bitmap) {
+                // The cache size will be measured in kilobytes rather than
+                // number of items.
+                return bitmap.getByteCount() / 1024;
+            }
+        };
 
     }
 
@@ -45,16 +57,15 @@ public class AdapterList extends ArrayAdapter<Item> {
         TextView subTitle;
         TextView quantity;
         public ImageView image;
-        public int position;
+
     }
 
-    private static class ThumbnailTask extends AsyncTask <String,Void,Bitmap>{
-        private int mPosition;
+    private class ThumbnailTask extends AsyncTask <String,Void,Bitmap>{
         private ViewHolder mHolder;
         private String  url;
+        private LruCache<String, Bitmap> mMemoryCache;
 
-        public ThumbnailTask(int position, ViewHolder holder,String miUrl) {
-            mPosition = position;
+        public ThumbnailTask(ViewHolder holder,String miUrl) {
             mHolder = holder;
             url = miUrl;
         }
@@ -62,8 +73,7 @@ public class AdapterList extends ArrayAdapter<Item> {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
-
-                mHolder.image.setImageBitmap(bitmap);
+                mHolder.image.setImageBitmap(getBitmapFromMemCache(url));
 
         }
 
@@ -73,6 +83,7 @@ public class AdapterList extends ArrayAdapter<Item> {
 
                 URL newurl = new URL(url);
                 Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
+                AdapterList.this.addBitmapToMemoryCache(url,mIcon_val);
                 return  mIcon_val;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -81,6 +92,7 @@ public class AdapterList extends ArrayAdapter<Item> {
             }
             return null;
         }
+
 
     }
 
@@ -95,9 +107,13 @@ public class AdapterList extends ArrayAdapter<Item> {
             holder.title = (TextView) convertView.findViewById(R.id.textView2);
             holder.price = (TextView) convertView.findViewById(R.id.textView4);
             holder.image = (ImageView)convertView.findViewById(R.id.imageView);
-            holder.position = position;
-            new ThumbnailTask(position, holder,item.getImage())
-                    .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+            if(getBitmapFromMemCache(item.getImage())==null) {
+                new ThumbnailTask(holder, item.getImage())
+                        .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+            }
+            else{
+                holder.image.setImageBitmap(getBitmapFromMemCache(item.getImage()));
+            }
             convertView.setTag(holder);
             if (actividad.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 holder.subTitle = (TextView) convertView.findViewById(R.id.textView3);
@@ -106,9 +122,13 @@ public class AdapterList extends ArrayAdapter<Item> {
         }
         else {
             holder = (ViewHolder) convertView.getTag();
-            new ThumbnailTask(position, holder,item.getImage())
-                    .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
-            convertView.setTag(holder);
+            if(getBitmapFromMemCache(item.getImage())==null) {
+                new ThumbnailTask(holder, item.getImage())
+                        .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+            }
+            else{
+                holder.image.setImageBitmap(getBitmapFromMemCache(item.getImage()));
+            }
 
         }
         holder.title.setText(item.getTitle());
@@ -120,4 +140,14 @@ public class AdapterList extends ArrayAdapter<Item> {
         return convertView;
 
     }
+    public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
+         mMemoryCache.put(key, bitmap);
+
+    }
+
+    public Bitmap getBitmapFromMemCache(String key) {
+        return mMemoryCache.get(key);
+    }
+
+
 }

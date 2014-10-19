@@ -14,10 +14,12 @@ public class Descripcion extends Activity implements DatosItems{
     String url;
     ImageView imagen;
     TextView titulo;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        titulo = (TextView)findViewById(R.id.textView1);
         setContentView(R.layout.activity_descripcion);
         imagen = (ImageView) findViewById(R.id.imageView);
         Bundle b = getIntent().getExtras();
