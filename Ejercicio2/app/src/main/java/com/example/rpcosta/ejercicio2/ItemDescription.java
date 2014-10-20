@@ -40,7 +40,19 @@ public class ItemDescription extends AsyncTask<String, String, Item> {
             URLConnection conection = url.openConnection();
             InputStream in = new BufferedInputStream(conection.getInputStream());
             JSONObject item = new JSONObject(getResponseText(in));
-            it = new Item(item.getString("title"), item.getInt("price"), item.getString("subtitle"), item.getInt("available_quantity"), item.getString("thumbnail"), item.getString("id"));
+            String titulo = item.getString("title");
+            int precio = item.getInt("price");
+            String subtitulo = item.getString("subtitle");
+            int cantidad = item.getInt("available_quantity");
+            String numeroItem = item.getString("id");
+            JSONObject image = (JSONObject) item.optJSONArray("pictures").get(0);
+            if(image!=null){
+                it = new Item(titulo,precio,subtitulo,cantidad,image.getString("url"),numeroItem);
+            }
+            else{
+                it = new Item(titulo,precio,subtitulo,cantidad,item.getString("thumbnail"),numeroItem);
+            }
+
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }

@@ -29,7 +29,6 @@ public class Resultados extends Activity implements Datos {
     private int offset;
     private static final int max =15;
     private String paginas = "&limit=15";
-    private ImageLoader imgLoader;
     private String url;
     ProgressDialog dialogo = null;
 

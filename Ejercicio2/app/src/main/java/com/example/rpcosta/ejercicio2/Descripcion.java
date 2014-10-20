@@ -1,6 +1,7 @@
 package com.example.rpcosta.ejercicio2;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +14,8 @@ public class Descripcion extends Activity implements DatosItems{
     Item i;
     String url;
     ImageView imagen;
-    TextView titulo;
+    TextView titulo,subtitulo,precio,cantidad;
+    private ManejadorImagenes manejador;
 
 
 
@@ -21,7 +23,9 @@ public class Descripcion extends Activity implements DatosItems{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion);
-        imagen = (ImageView) findViewById(R.id.imageView);
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        final int cacheSize = maxMemory / 8;
+        manejador = new ManejadorImagenes(cacheSize);
         Bundle b = getIntent().getExtras();
         id = b.getString("id");
         url ="https://api.mercadolibre.com/items/";
@@ -54,7 +58,21 @@ public class Descripcion extends Activity implements DatosItems{
     @Override
     public void refreshdatos(Item item) {
         titulo = (TextView)findViewById(R.id.textView1);
+        subtitulo = (TextView)findViewById(R.id.textView2);
+        precio = (TextView)findViewById(R.id.textView3);
+        cantidad = (TextView)findViewById(R.id.textView4);
+        imagen = (ImageView) findViewById(R.id.imageView);
         i = item;
         titulo.setText(i.getTitle());
+        if(!i.getSubtitle().equals("null")) {
+            subtitulo.setText(i.getSubtitle());
+        }
+        else{
+            subtitulo.setText("Sin subtitulo");
+        }
+        precio.setText("Precio : "+i.getPrice());
+        cantidad.setText("Cantidad: "+ i.getQuantity());
+        manejador.setImagenes(i.getImage(),imagen);
+
     }
 }

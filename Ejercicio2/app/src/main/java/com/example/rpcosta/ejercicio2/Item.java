@@ -1,7 +1,6 @@
 package com.example.rpcosta.ejercicio2;
 
 import android.media.Image;
-
 import java.io.Serializable;
 
 /**
@@ -18,7 +17,7 @@ public class Item implements Serializable {
     private String identificador;
 
     public String getIdentificador() {
-        return identificador;
+         return identificador;
     }
 
     public void setIdentificador(String identificador) {

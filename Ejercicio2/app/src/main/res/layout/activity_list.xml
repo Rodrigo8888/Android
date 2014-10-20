@@ -16,25 +16,25 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="184dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="0.09">
 
 
             <ImageView
-                android:layout_width="91dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:id="@+id/imageView"
-                android:src="@drawable/ic_launcher"
-                android:layout_gravity="center_horizontal" />
+                android:src="@drawable/ic_launcher"/>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="176dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="1">
+            android:gravity="center_vertical">
 
             <TextView
                 android:layout_width="wrap_content"

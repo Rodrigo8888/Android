@@ -28,71 +28,26 @@ public class AdapterList extends ArrayAdapter<Item> {
 
     private ArrayList<Item> lista;
     private LayoutInflater inflater;
-    private int resource;
-    private LruCache<String, Bitmap> mMemoryCache;
+    private ManejadorImagenes manejador;
     Context actividad;
 
     public AdapterList(Context context, int resc, ArrayList<Item> objects) {
         super(context, resc, objects);
         lista = objects;
-        resource = resc;
         actividad = context;
         inflater = LayoutInflater.from(context);
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         final int cacheSize = maxMemory / 8;
-        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
-            @Override
-            protected int sizeOf(String key, Bitmap bitmap) {
-                // The cache size will be measured in kilobytes rather than
-                // number of items.
-                return bitmap.getByteCount() / 1024;
-            }
-        };
+        manejador = new ManejadorImagenes(cacheSize);
 
     }
 
-    static class ViewHolder {
+   static class ViewHolder {
         TextView title;
         TextView price;
         TextView subTitle;
         TextView quantity;
         public ImageView image;
-
-    }
-
-    private class ThumbnailTask extends AsyncTask <String,Void,Bitmap>{
-        private ViewHolder mHolder;
-        private String  url;
-        private LruCache<String, Bitmap> mMemoryCache;
-
-        public ThumbnailTask(ViewHolder holder,String miUrl) {
-            mHolder = holder;
-            url = miUrl;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-                mHolder.image.setImageBitmap(getBitmapFromMemCache(url));
-
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... url1) {
-            try {
-
-                URL newurl = new URL(url);
-                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
-                AdapterList.this.addBitmapToMemoryCache(url,mIcon_val);
-                return  mIcon_val;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
 
     }
 
@@ -107,13 +62,7 @@ public class AdapterList extends ArrayAdapter<Item> {
             holder.title = (TextView) convertView.findViewById(R.id.textView2);
             holder.price = (TextView) convertView.findViewById(R.id.textView4);
             holder.image = (ImageView)convertView.findViewById(R.id.imageView);
-            if(getBitmapFromMemCache(item.getImage())==null) {
-                new ThumbnailTask(holder, item.getImage())
-                        .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
-            }
-            else{
-                holder.image.setImageBitmap(getBitmapFromMemCache(item.getImage()));
-            }
+            manejador.setImagenes(item.getImage(),holder.image);
             convertView.setTag(holder);
             if (actividad.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 holder.subTitle = (TextView) convertView.findViewById(R.id.textView3);
@@ -122,13 +71,7 @@ public class AdapterList extends ArrayAdapter<Item> {
         }
         else {
             holder = (ViewHolder) convertView.getTag();
-            if(getBitmapFromMemCache(item.getImage())==null) {
-                new ThumbnailTask(holder, item.getImage())
-                        .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
-            }
-            else{
-                holder.image.setImageBitmap(getBitmapFromMemCache(item.getImage()));
-            }
+            manejador.setImagenes(item.getImage(),holder.image);
 
         }
         holder.title.setText(item.getTitle());
@@ -140,14 +83,7 @@ public class AdapterList extends ArrayAdapter<Item> {
         return convertView;
 
     }
-    public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
-         mMemoryCache.put(key, bitmap);
 
-    }
-
-    public Bitmap getBitmapFromMemCache(String key) {
-        return mMemoryCache.get(key);
-    }
 
 
 }
