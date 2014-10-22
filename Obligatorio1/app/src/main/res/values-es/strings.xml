@@ -3,13 +3,15 @@
 
     <string name="app_name">Obligatorio1</string>
     <string name="hello_world">Hello world!</string>
-    <string name="Usuario">Usuario</string>
+    <string name="Usuario">Mail</string>
     <string name="nuevaPartida">Nueva Partida</string>
     <string name="Contraseña">Contraseña</string>
     <string name="boton">Ingresar</string>
     <string name="bienvenido">Bienvenido!</string>
+    <string name="errorLogin">Mail o Password incorrectos</string>
     <string name="chat">Chat</string>
     <string name="nombreApp">Cerebrotes</string>
+    <string name="enterPass">Ingresa tu nueva contraseña</string>
     <string name="Ingresocontraseña">Ingrese su contraseña</string>
     <string name="contraseña1">Este es la Contraseña con la cual iniciarás sesión</string>
     <string name="mail">Correo Electrónico</string>

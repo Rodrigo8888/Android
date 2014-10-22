@@ -1,11 +1,10 @@
-package com.example.rpcosta.ejercicio2;
+package com.example.rpcosta.ejercicio2.Asynctask;
 
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.rpcosta.ejercicio2.Interfaces.Datos;
+import com.example.rpcosta.ejercicio2.Item;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

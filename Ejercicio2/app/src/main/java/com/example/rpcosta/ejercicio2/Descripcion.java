@@ -1,15 +1,17 @@
 package com.example.rpcosta.ejercicio2;
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.rpcosta.ejercicio2.Asynctask.ItemDescription;
+import com.example.rpcosta.ejercicio2.Interfaces.DatosItems;
 
-public class Descripcion extends Activity implements DatosItems{
+
+public class Descripcion extends Activity implements DatosItems {
     String id;
     Item i;
     String url;
@@ -23,9 +25,7 @@ public class Descripcion extends Activity implements DatosItems{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion);
-        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-        final int cacheSize = maxMemory / 8;
-        manejador = new ManejadorImagenes(cacheSize);
+        manejador = ManejadorImagenes.getInstance();
         Bundle b = getIntent().getExtras();
         id = b.getString("id");
         url ="https://api.mercadolibre.com/items/";

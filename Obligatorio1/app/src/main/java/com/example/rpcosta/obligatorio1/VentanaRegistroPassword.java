@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class VentanaRegistroPassword extends Activity {
+public class VentanaRegistroPassword extends Activity implements RegUsuario{
     //Controles
     private Button continuar;
     private EditText pass;
@@ -22,11 +22,13 @@ public class VentanaRegistroPassword extends Activity {
     private String mail;
     private String error;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_registro_password);
         pass = (EditText)findViewById(R.id.editText);
+
         Bundle b = getIntent().getExtras();
         nombre = b.getString("Nombre");
         mail = b.getString("Mail");
@@ -41,13 +43,11 @@ public class VentanaRegistroPassword extends Activity {
                     mensaje.show();
                 }
                 else{
-                    error=getResources().getString(R.string.registroOK);
-                    mensaje=Toast.makeText(VentanaRegistroPassword.this,error,Toast.LENGTH_SHORT);
-                    mensaje.show();
                     Jugador j = new Jugador();
-                    j.setContraseña(contraseña);
                     j.setMail(mail);
                     j.setNombre(nombre);
+                    j.setPassword(contraseña);
+                    new RegistroUsuario(VentanaRegistroPassword.this).execute(j);
                     Intent i = new Intent(VentanaRegistroPassword.this,MyActivity.class);
                     startActivity(i);
                     finish();
@@ -77,5 +77,12 @@ public class VentanaRegistroPassword extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void result(String results) {
+        error=results;
+        mensaje=Toast.makeText(VentanaRegistroPassword.this,error,Toast.LENGTH_SHORT);
+        mensaje.show();
     }
 }

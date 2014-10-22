@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.LruCache;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -14,15 +14,16 @@ import java.net.URL;
 /**
  * Created by rpcosta on 20/10/14.
  */
-public class ManejadorImagenes extends LruCache<String,Bitmap> {
+public class ManejadorImagenes{
+    private static ManejadorImagenes Mimg;
     private LruCache<String, Bitmap> mMemoryCache;
-    /**
-     * @param maxSize for caches that do not override {@link #sizeOf}, this is
-     *                the maximum number of entries in the cache. For all other caches,
-     *                this is the maximum sum of the sizes of the entries in this cache.
-     */
-    public ManejadorImagenes(int maxSize) {
-        super(maxSize);
+    public static ManejadorImagenes getInstance() {
+        if (Mimg == null) {
+            Mimg = new ManejadorImagenes();
+        }
+        return Mimg;
+    }
+        public ManejadorImagenes() {
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         final int cacheSize = maxMemory / 8;
         mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {

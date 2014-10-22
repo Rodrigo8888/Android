@@ -1,4 +1,6 @@
-package com.example.rpcosta.ejercicio2;
+package com.example.rpcosta.ejercicio2.Interfaces;
+
+import com.example.rpcosta.ejercicio2.Item;
 
 import java.util.ArrayList;
 

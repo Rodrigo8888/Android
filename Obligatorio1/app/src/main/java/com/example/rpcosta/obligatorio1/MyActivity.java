@@ -11,18 +11,18 @@ import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 
 
-
-public class MyActivity extends Activity {
+public class MyActivity extends Activity implements ValUsuario{
 
     //Controles
-    private EditText usuario,contraseña;
-    private Button ingresar,olvido,registro;
+    private EditText usuario, contraseña;
+    private Button ingresar, olvido, registro;
     private Toast mensaje;
 
     //Variables
-    String user;
+    String mail;
     String pass;
     String mensajeError;
 
@@ -31,34 +31,43 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-        usuario =(EditText)findViewById(R.id.editText);
-        contraseña=(EditText)findViewById(R.id.editText2);
-        olvido=(Button)findViewById(R.id.button2);
-        registro=(Button)findViewById(R.id.button3);
-        ingresar=(Button)findViewById(R.id.button);
+        usuario = (EditText) findViewById(R.id.editText);
+        contraseña = (EditText) findViewById(R.id.editText2);
+        olvido = (Button) findViewById(R.id.button2);
+        registro = (Button) findViewById(R.id.button3);
+        ingresar = (Button) findViewById(R.id.button);
         ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                user=usuario.getText().toString();
-                pass=contraseña.getText().toString();
+                mail = usuario.getText().toString();
+                pass = contraseña.getText().toString();
+                ArrayList<String> lista = new ArrayList<String>();
                 //Validación de datos de ingreso
-                if(user.isEmpty()||pass.isEmpty()){
-                    mensajeError=getResources().getString(R.string.mensajeErrorEmpty);
-                    mensaje = Toast.makeText(MyActivity.this,mensajeError,Toast.LENGTH_SHORT);
+
+                if (mail.isEmpty() || pass.isEmpty()) {
+                    mensajeError = getResources().getString(R.string.mensajeErrorEmpty);
+                    mensaje = Toast.makeText(MyActivity.this, mensajeError, Toast.LENGTH_SHORT);
                     mensaje.show();
-                }
-                else{
-                    Intent i = new Intent(MyActivity.this,VentanaHome.class);
-                    startActivity(i);
-                    finish();
+                } else {
+                    lista.add(mail);
+                    lista.add(pass);
+                    new ValidacionLogin(MyActivity.this).execute(lista);
+
                 }
             }
         });
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MyActivity.this,VentanaRegistroNombre.class);
+                Intent i = new Intent(MyActivity.this, VentanaRegistroNombre.class);
+                startActivity(i);
+            }
+        });
+        olvido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MyActivity.this,OlvidoPass.class);
                 startActivity(i);
             }
         });
@@ -86,5 +95,19 @@ public class MyActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void validacion(Boolean correcto) {
+        if(correcto){
+            Intent i = new Intent(MyActivity.this, VentanaHome.class);
+            startActivity(i);
+            finish();
+        }
+        else{
+            mensajeError = getResources().getString(R.string.errorLogin);
+            mensaje = Toast.makeText(MyActivity.this, mensajeError, Toast.LENGTH_SHORT);
+            mensaje.show();
+        }
     }
 }

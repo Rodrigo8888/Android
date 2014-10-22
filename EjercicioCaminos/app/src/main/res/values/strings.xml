@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EjercicioCaminos</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="meli">Tamaño Oficina Meli</string>
+    <string name="cafe">Máquina de café</string>
+    <string name="golosinas">Máquina de golosinas</string>
+    <string name="chicas">Área Chicas</string>
+    <string name="jefe">Visión del Jefe</string>
+    <string name="buscar">Buscar Camino</string>
+
+</resources>

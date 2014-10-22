@@ -1,17 +1,17 @@
-package com.example.rpcosta.ejercicio2;
+package com.example.rpcosta.ejercicio2.Asynctask;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONArray;
+import com.example.rpcosta.ejercicio2.Interfaces.DatosItems;
+import com.example.rpcosta.ejercicio2.Item;
+
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**

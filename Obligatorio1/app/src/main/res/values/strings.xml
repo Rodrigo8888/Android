@@ -3,7 +3,8 @@
 
     <string name="app_name">Obligatorio1</string>
     <string name="hello_world">Hello world!</string>
-    <string name="Usuario">User</string>
+    <string name="Usuario">Mail</string>
+    <string name="errorLogin">Wrong mail / password</string>
     <string name="boton">Login</string>
     <string name="nombre">Name</string>
     <string name="nuevaPartida">New Game</string>
@@ -12,6 +13,7 @@
     <string name="Ingresocontraseña">Enter your Password</string>
     <string name="contraseña1">This is the Password you will use for login</string>
     <string name="continuar">Continue</string>
+    <string name="newpass">Enter you new password</string>
     <string name="registro">Register</string>
     <string name="mail">E-mail</string>
     <string name="registroOK">Successfully Register</string>
@@ -32,5 +34,6 @@
     <string name="title_activity_ventana_home">VentanaHome</string>
     <string name="title_activity_ventana_desafios">VentanaDesafios</string>
     <string name="title_activity_mi_perfil">MiPerfil</string>
+    <string name="title_activity_olvido_pass">OlvidoPass</string>
 
 </resources>

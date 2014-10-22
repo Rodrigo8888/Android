@@ -1,4 +1,4 @@
-package com.example.rpcosta.ejercicio2;
+package com.example.rpcosta.ejercicio2.Adapter;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -14,6 +14,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.rpcosta.ejercicio2.Item;
+import com.example.rpcosta.ejercicio2.ManejadorImagenes;
+import com.example.rpcosta.ejercicio2.R;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -36,9 +40,7 @@ public class AdapterList extends ArrayAdapter<Item> {
         lista = objects;
         actividad = context;
         inflater = LayoutInflater.from(context);
-        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-        final int cacheSize = maxMemory / 8;
-        manejador = new ManejadorImagenes(cacheSize);
+        manejador = ManejadorImagenes.getInstance();
 
     }
 

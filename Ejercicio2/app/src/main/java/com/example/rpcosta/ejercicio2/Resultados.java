@@ -1,6 +1,5 @@
 package com.example.rpcosta.ejercicio2;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,11 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.rpcosta.ejercicio2.Adapter.AdapterList;
+import com.example.rpcosta.ejercicio2.Asynctask.Busqueda;
+import com.example.rpcosta.ejercicio2.Interfaces.Datos;
 
 import java.util.ArrayList;
 

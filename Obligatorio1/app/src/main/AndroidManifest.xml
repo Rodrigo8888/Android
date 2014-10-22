@@ -49,6 +49,10 @@
             android:name=".MiPerfil"
             android:label="@string/title_activity_mi_perfil" >
         </activity>
+        <activity
+            android:name=".OlvidoPass"
+            android:label="@string/title_activity_olvido_pass" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
