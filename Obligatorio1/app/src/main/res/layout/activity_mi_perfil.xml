@@ -1,12 +1,14 @@
-<ScrollView
+<LinearLayout
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2" >
+
 
         <LinearLayout
             android:orientation="vertical"
@@ -61,7 +63,5 @@
                     android:id="@+id/imageView2" />
             </LinearLayout>
         </LinearLayout>
-
-
-    </RelativeLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

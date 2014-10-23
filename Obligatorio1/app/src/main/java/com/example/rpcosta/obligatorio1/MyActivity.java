@@ -1,6 +1,7 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -8,23 +9,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.content.Intent;
 import android.widget.Toast;
+
+import com.example.rpcosta.obligatorio1.Interfaces.ValUsuario;
 
 import java.util.ArrayList;
 
 
-public class MyActivity extends Activity implements ValUsuario{
+public class MyActivity extends Activity implements ValUsuario {
 
     //Controles
     private EditText usuario, contraseña;
-    private Button ingresar, olvido, registro;
+    private Button ingresar, registro;
     private Toast mensaje;
 
     //Variables
     String mail;
     String pass;
     String mensajeError;
+    String id;
 
 
     @Override
@@ -33,7 +36,6 @@ public class MyActivity extends Activity implements ValUsuario{
         setContentView(R.layout.activity_my);
         usuario = (EditText) findViewById(R.id.editText);
         contraseña = (EditText) findViewById(R.id.editText2);
-        olvido = (Button) findViewById(R.id.button2);
         registro = (Button) findViewById(R.id.button3);
         ingresar = (Button) findViewById(R.id.button);
         ingresar.setOnClickListener(new View.OnClickListener() {
@@ -64,13 +66,6 @@ public class MyActivity extends Activity implements ValUsuario{
                 startActivity(i);
             }
         });
-        olvido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MyActivity.this,OlvidoPass.class);
-                startActivity(i);
-            }
-        });
 
 
     }
@@ -97,17 +92,22 @@ public class MyActivity extends Activity implements ValUsuario{
         return super.onOptionsItemSelected(item);
     }
 
+
+
     @Override
-    public void validacion(Boolean correcto) {
-        if(correcto){
-            Intent i = new Intent(MyActivity.this, VentanaHome.class);
+    public void validacion(Boolean correcto, String ide) {
+        if (correcto) {
+            id=ide;
+            Intent i = new Intent(MyActivity.this, MiPerfil.class);
+            i.putExtra("id", id);
             startActivity(i);
             finish();
-        }
-        else{
+        } else {
             mensajeError = getResources().getString(R.string.errorLogin);
             mensaje = Toast.makeText(MyActivity.this, mensajeError, Toast.LENGTH_SHORT);
             mensaje.show();
         }
     }
 }
+
+

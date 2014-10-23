@@ -38,10 +38,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VentanaHome"
-            android:label="@string/title_activity_ventana_home" >
-        </activity>
-        <activity
             android:name=".VentanaDesafios"
             android:label="@string/title_activity_ventana_desafios" >
         </activity>
@@ -52,6 +48,14 @@
         <activity
             android:name=".OlvidoPass"
             android:label="@string/title_activity_olvido_pass" >
+        </activity>
+        <activity
+            android:name=".EditarDatos"
+            android:label="@string/title_activity_editar_datos" >
+        </activity>
+        <activity
+            android:name=".ChangeNameMail"
+            android:label="@string/title_activity_change_name_mail" >
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

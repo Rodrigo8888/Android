@@ -64,15 +64,21 @@ public class Descripcion extends Activity implements DatosItems {
         imagen = (ImageView) findViewById(R.id.imageView);
         i = item;
         titulo.setText(i.getTitle());
-        if(!i.getSubtitle().equals("null")) {
-            subtitulo.setText(i.getSubtitle());
-        }
-        else{
+        if(i.getSubtitle()==null) {
             subtitulo.setText("Sin subtitulo");
         }
+        else{
+            subtitulo.setText(i.getSubtitle());
+        }
         precio.setText("Precio : "+i.getPrice());
-        cantidad.setText("Cantidad: "+ i.getQuantity());
-        manejador.setImagenes(i.getImage(),imagen);
+        cantidad.setText("Cantidad: "+ i.getAvailable_quantity());
+        //Verificar antes si la lista es o no vacia
+        if(i.getLista()!=null) {
+            manejador.setImagenes(i.getLista().get(0).getUrl(), imagen);
+        }
+        else{
+            manejador.setImagenes(i.getThumbnail(), imagen);
+        }
 
     }
 }

@@ -3,32 +3,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context="com.example.rpcosta.obligatorio1.VentanaDesafios">
+    tools:context="com.example.rpcosta.obligatorio1.VentanaHome"
+    android:id="@+id/relativelayout">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="111dp"
-        android:id="@+id/linearLayout"></LinearLayout>
+        android:id="@+id/layout7">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"></LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/layout7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView1" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="320dp"
+        android:textColor="@android:color/white"
+        android:layout_height="35dp"
+        android:text="@string/nuevaPartida"
+        android:textSize="15sp"
+        android:background="@drawable/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/layout7"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/buttons" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout2"></LinearLayout>
+        android:layout_alignParentStart="true">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"></LinearLayout>
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/cerebrotes1"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 </RelativeLayout>

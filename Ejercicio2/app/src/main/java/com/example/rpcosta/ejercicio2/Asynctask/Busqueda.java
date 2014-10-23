@@ -2,26 +2,23 @@ package com.example.rpcosta.ejercicio2.Asynctask;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
+import com.example.rpcosta.ejercicio2.APIResults;
 import com.example.rpcosta.ejercicio2.Interfaces.Datos;
 import com.example.rpcosta.ejercicio2.Item;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  * Created by rpcosta on 13/10/14.
  */
 public class Busqueda extends AsyncTask<String, String, ArrayList<Item>> {
     private Datos dto;
     private ArrayList<Item> listaItems;
+    private APIResults resultados;
 
     public Busqueda(Datos activity) {
         this.dto = activity;
@@ -41,25 +38,14 @@ public class Busqueda extends AsyncTask<String, String, ArrayList<Item>> {
             URL url = new URL(urlSearch[0]);
             URLConnection conection = url.openConnection();
             InputStream in = new BufferedInputStream(conection.getInputStream());
-            JSONObject json = new JSONObject(getResponseText(in));
-            JSONArray lista = json.getJSONArray("results");
-            listaItems = new ArrayList<Item>();
-            for (int i = 0; i < lista.length(); i++) {
-                JSONObject item = (JSONObject) lista.get(i);
-                listaItems.add(new Item(item.getString("title"), item.getInt("price"), item.getString("subtitle"), item.getInt("available_quantity"),item.getString("thumbnail"),item.getString("id")));
-
-                if (isCancelled()) break;
-            }
-
+            ObjectMapper mapper = new ObjectMapper();
+            resultados = mapper.readValue(in, APIResults.class);
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }
-        return listaItems;
+        return resultados.getResults();
     }
 
-    private String getResponseText(InputStream inStream) {
-        return new Scanner(inStream).useDelimiter("\\A").next();
-    }
 
 
 

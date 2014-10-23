@@ -9,27 +9,36 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.rpcosta.obligatorio1.Interfaces.ChangePass;
 
-public class OlvidoPass extends Activity {
+import java.util.ArrayList;
+
+
+public class OlvidoPass extends Activity implements ChangePass {
     private Button enviar;
     EditText newPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_olvido_pass);
-        enviar = (Button)findViewById(R.id.button);
-        newPass = (EditText)findViewById(R.id.editText);
-        final String pass = newPass.getText().toString();
+        enviar = (Button) findViewById(R.id.button);
+        newPass = (EditText) findViewById(R.id.editText);
+        Bundle b = getIntent().getExtras();
+        final String id = b.getString("id");
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pass.isEmpty()){
+                String pass = newPass.getText().toString();
+                if (pass.isEmpty()) {
                     String error = getResources().getString(R.string.mensajeErrorEmpty);
-                    Toast msj = Toast.makeText(OlvidoPass.this,error,Toast.LENGTH_SHORT);
+                    Toast msj = Toast.makeText(OlvidoPass.this, error, Toast.LENGTH_SHORT);
                     msj.show();
-                }
-                else{
-
+                } else {
+                    ArrayList<String> lista = new ArrayList<String>();
+                    lista.add(id);
+                    lista.add(pass);
+                    new CambioPass(OlvidoPass.this).execute(lista);
                 }
             }
         });
@@ -53,5 +62,20 @@ public class OlvidoPass extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void result(Boolean results) {
+        if(results){
+            String mensaje = getResources().getString(R.string.cambioPass);
+            Toast msj = Toast.makeText(OlvidoPass.this,mensaje,Toast.LENGTH_SHORT);
+            msj.show();
+            finish();
+        }
+        else{
+            String mensaje = getResources().getString(R.string.nuevoIntento);
+            Toast msj = Toast.makeText(OlvidoPass.this,mensaje,Toast.LENGTH_SHORT);
+            msj.show();
+        }
     }
 }

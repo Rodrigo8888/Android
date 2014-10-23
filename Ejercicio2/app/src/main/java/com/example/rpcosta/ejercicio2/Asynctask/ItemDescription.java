@@ -2,11 +2,9 @@ package com.example.rpcosta.ejercicio2.Asynctask;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.example.rpcosta.ejercicio2.Interfaces.DatosItems;
 import com.example.rpcosta.ejercicio2.Item;
-
-import org.json.JSONObject;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -39,19 +37,8 @@ public class ItemDescription extends AsyncTask<String, String, Item> {
             URL url = new URL(params[0]);
             URLConnection conection = url.openConnection();
             InputStream in = new BufferedInputStream(conection.getInputStream());
-            JSONObject item = new JSONObject(getResponseText(in));
-            String titulo = item.getString("title");
-            int precio = item.getInt("price");
-            String subtitulo = item.getString("subtitle");
-            int cantidad = item.getInt("available_quantity");
-            String numeroItem = item.getString("id");
-            JSONObject image = (JSONObject) item.optJSONArray("pictures").get(0);
-            if(image!=null){
-                it = new Item(titulo,precio,subtitulo,cantidad,image.getString("url"),numeroItem);
-            }
-            else{
-                it = new Item(titulo,precio,subtitulo,cantidad,item.getString("thumbnail"),numeroItem);
-            }
+            ObjectMapper mapper = new ObjectMapper();
+            it = mapper.readValue(in, Item.class);
 
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());

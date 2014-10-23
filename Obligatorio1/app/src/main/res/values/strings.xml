@@ -9,14 +9,19 @@
     <string name="nombre">Name</string>
     <string name="nuevaPartida">New Game</string>
     <string name="nombreApp">Brainers</string>
+    <string name="cambiarnombremail">Enter you new mail and mail</string>
     <string name="chat">Chat</string>
     <string name="Ingresocontraseña">Enter your Password</string>
     <string name="contraseña1">This is the Password you will use for login</string>
     <string name="continuar">Continue</string>
+    <string name="changepass">Change password</string>
     <string name="newpass">Enter you new password</string>
     <string name="registro">Register</string>
+    <string name="nuevoIntento">Change failed, try again</string>
     <string name="mail">E-mail</string>
     <string name="registroOK">Successfully Register</string>
+    <string name="editarNombre">Change Name and Mail</string>
+    <string name="cambioPass">Change successfully</string>
     <string name="finalizar">Done</string>
     <string name="bienvenido">Welcome!</string>
     <string name="correo">Enter your email address</string>
@@ -35,5 +40,7 @@
     <string name="title_activity_ventana_desafios">VentanaDesafios</string>
     <string name="title_activity_mi_perfil">MiPerfil</string>
     <string name="title_activity_olvido_pass">OlvidoPass</string>
+    <string name="title_activity_editar_datos">EditarDatos</string>
+    <string name="title_activity_change_name_mail">ChangeNameMail</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.rpcosta.obligatorio1;
+package com.example.rpcosta.obligatorio1.Interfaces;
 
 /**
  * Created by rpcosta on 21/10/14.

@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.rpcosta.obligatorio1.Interfaces.RegUsuario;
 
-public class VentanaRegistroPassword extends Activity implements RegUsuario{
+
+public class VentanaRegistroPassword extends Activity implements RegUsuario {
     //Controles
     private Button continuar;
     private EditText pass;

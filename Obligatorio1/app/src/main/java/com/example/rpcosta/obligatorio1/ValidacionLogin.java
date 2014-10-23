@@ -3,16 +3,15 @@ package com.example.rpcosta.obligatorio1;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.rpcosta.obligatorio1.Interfaces.ValUsuario;
+
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,6 +23,7 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
     String url;
     ValUsuario dto;
     BufferedReader reader;
+    String id;
 
     public ValidacionLogin(ValUsuario activity) {
         dto = activity;
@@ -32,7 +32,7 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
-        dto.validacion(aBoolean);
+        dto.validacion(aBoolean,id);
     }
 
 
@@ -40,8 +40,8 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
     protected Boolean doInBackground(ArrayList<String>... params) {
 
         try {
-            url = "http://ortapipreguntados.herokuapp.com/users/login/";
-            String urlParameters = "&mail=" + params[0].get(0) + "&password=" + params[0].get(1);
+            url = "http://ortapipreguntados.herokuapp.com/users/login/?";
+            String urlParameters = "mail=" + params[0].get(0) + "&password=" + params[0].get(1);
             String request = url;
             URL url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -58,8 +58,10 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
             wr.flush();
             InputStreamReader in = new InputStreamReader(connection.getInputStream());
             JSONObject json = new JSONObject(getResponseText(in));
+            JSONObject _id = json.getJSONObject("user");
             boolean respuesta = (Boolean) json.getBoolean("success");
             if (respuesta == true) {
+                id = _id.getString("_id");
                 result = true;
             } else {
                 result = false;

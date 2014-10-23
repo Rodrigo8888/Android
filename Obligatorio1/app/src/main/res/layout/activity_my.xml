@@ -53,15 +53,6 @@
             android:id="@+id/editText2"
             android:layout_gravity="center_horizontal" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/olvido"
-            android:textColor="@android:color/holo_green_light"
-            android:background="@android:color/transparent"
-            android:id="@+id/button2"
-            android:layout_gravity="center_horizontal" />
-
     </LinearLayout>
 
     <LinearLayout

@@ -29,6 +29,7 @@ public class Resultados extends Activity implements Datos {
     private int offset;
     private static final int max =15;
     private String paginas = "&limit=15";
+    private static String listQuery = "Lista";
     private String url;
     ProgressDialog dialogo = null;
 
@@ -78,7 +79,7 @@ public class Resultados extends Activity implements Datos {
         if (savedInstanceState != null) {
             EditText texto = (EditText) findViewById(R.id.editText1);
             miLista = (ListView) findViewById(R.id.listView1);
-            lista = (ArrayList<Item>) savedInstanceState.getSerializable("Lista");
+            lista = (ArrayList<Item>) savedInstanceState.getSerializable(listQuery);
             adapter = new AdapterList(Resultados.this, R.id.listView1, lista);
             miLista.setAdapter(adapter);
 
@@ -120,7 +121,7 @@ public class Resultados extends Activity implements Datos {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("Lista", lista);
+        outState.putSerializable(listQuery, lista);
         super.onSaveInstanceState(outState);
     }
 

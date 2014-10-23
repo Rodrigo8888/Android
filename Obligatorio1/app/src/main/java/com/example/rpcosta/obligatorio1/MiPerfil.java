@@ -1,17 +1,33 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 
 public class MiPerfil extends Activity {
-
+    ImageView editar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
+        Bundle b = getIntent().getExtras();
+        final String id = b.getString("id");
+        editar = (ImageView)findViewById(R.id.imageView2);
+        editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MiPerfil.this,EditarDatos.class);
+                i.putExtra("id",id);
+                startActivity(i);
+            }
+        });
+
     }
 
 
