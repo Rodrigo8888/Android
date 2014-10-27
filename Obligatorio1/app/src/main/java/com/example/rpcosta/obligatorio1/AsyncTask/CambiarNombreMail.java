@@ -1,13 +1,10 @@
-package com.example.rpcosta.obligatorio1;
+package com.example.rpcosta.obligatorio1.AsyncTask;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.example.rpcosta.obligatorio1.Interfaces.ValUsuario;
-
+import com.example.rpcosta.obligatorio1.ChangeNameMail;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -16,23 +13,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by rpcosta on 21/10/14.
+ * Created by rpcosta on 23/10/14.
  */
-public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolean> {
+public class CambiarNombreMail extends AsyncTask<ArrayList<String>, String, Boolean> {
     boolean result;
     String url;
-    ValUsuario dto;
-    BufferedReader reader;
-    String id;
+    ChangeNameMail dto;
 
-    public ValidacionLogin(ValUsuario activity) {
+    public CambiarNombreMail(ChangeNameMail activity) {
         dto = activity;
     }
 
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
-        dto.validacion(aBoolean,id);
+        dto.resultado(aBoolean);
     }
 
 
@@ -40,8 +35,9 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
     protected Boolean doInBackground(ArrayList<String>... params) {
 
         try {
-            url = "http://ortapipreguntados.herokuapp.com/users/login/?";
-            String urlParameters = "mail=" + params[0].get(0) + "&password=" + params[0].get(1);
+            url = "http://ortapipreguntados.herokuapp.com/users/edit/?";
+            String urlParameters = "id=" + params[0].get(0) + "&name=" + params[0].get(1)+"&mail=" + params[0].get(2);
+            Log.v("urlParams= ",urlParameters);
             String request = url;
             URL url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -58,10 +54,8 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
             wr.flush();
             InputStreamReader in = new InputStreamReader(connection.getInputStream());
             JSONObject json = new JSONObject(getResponseText(in));
-            JSONObject _id = json.getJSONObject("user");
             boolean respuesta = (Boolean) json.getBoolean("success");
             if (respuesta == true) {
-                id = _id.getString("_id");
                 result = true;
             } else {
                 result = false;
@@ -69,12 +63,12 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
             wr.close();
             connection.disconnect();
 
-        } catch (Exception ex) {
-
+        } catch (Exception e){
+            Log.e("Error",e.getMessage());
         }
 
-    return result;
-}
+        return result;
+    }
 
     private String getResponseText(InputStreamReader inStream) {
         return new Scanner(inStream).useDelimiter("\\A").next();

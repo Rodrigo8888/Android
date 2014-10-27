@@ -1,34 +1,44 @@
-package com.example.rpcosta.obligatorio1;
+package com.example.rpcosta.obligatorio1.AsyncTask;
 
 import android.os.AsyncTask;
-
-import com.example.rpcosta.obligatorio1.Interfaces.RegUsuario;
-
+import com.example.rpcosta.obligatorio1.Interfaces.ValUsuario;
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Created by rpcosta on 21/10/14.
  */
-public class RegistroUsuario extends AsyncTask<Jugador,Jugador,String> {
-    String url;
-    RegUsuario dto;
-    String result;
-    public RegistroUsuario(RegUsuario activity) {
+public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolean> {
+    boolean result;
+    private String url;
+    private ValUsuario dto;
+    private String id;
+    private String name;
+    private String mail;
+
+    public ValidacionLogin(ValUsuario activity) {
         dto = activity;
     }
 
     @Override
-    protected String doInBackground(Jugador... params) {
+    protected void onPostExecute(Boolean aBoolean) {
+        super.onPostExecute(aBoolean);
+        dto.validacion(aBoolean,id,name,mail);
+    }
+
+
+    @Override
+    protected Boolean doInBackground(ArrayList<String>... params) {
 
         try {
-            url = "http://ortapipreguntados.herokuapp.com/users/new/?";
-            String urlParameters = "name="+params[0].getNombre()+"&mail="+params[0].getMail()+"&password="+params[0].getPassword();
+            url = "http://ortapipreguntados.herokuapp.com/users/login/?";
+            String urlParameters = "mail=" + params[0].get(0) + "&password=" + params[0].get(1);
             String request = url;
             URL url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -45,30 +55,27 @@ public class RegistroUsuario extends AsyncTask<Jugador,Jugador,String> {
             wr.flush();
             InputStreamReader in = new InputStreamReader(connection.getInputStream());
             JSONObject json = new JSONObject(getResponseText(in));
+            JSONObject _id = json.getJSONObject("user");
             boolean respuesta = (Boolean) json.getBoolean("success");
             if (respuesta == true) {
-                result = "Registro Correcto";
+                id = _id.getString("_id");
+                name = _id.getString("name");
+                mail = _id.getString("mail");
+                result = true;
             } else {
-                result = "No se pudo registrar, intente nuevamente";
+                result = false;
             }
             wr.close();
             connection.disconnect();
+
         } catch (Exception ex) {
 
         }
-        return result;
-    }
 
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        dto.result(s);
-
-
-    }
+    return result;
+}
 
     private String getResponseText(InputStreamReader inStream) {
         return new Scanner(inStream).useDelimiter("\\A").next();
     }
-
 }

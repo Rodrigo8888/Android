@@ -2,15 +2,20 @@
 <resources>
 
     <string name="app_name">Obligatorio1</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="Usuario">Mail</string>
+    <string name="Usuario">E-mail</string>
     <string name="nuevaPartida">Nueva Partida</string>
     <string name="Contraseña">Contraseña</string>
     <string name="boton">Ingresar</string>
     <string name="bienvenido">Bienvenido!</string>
-    <string name="errorLogin">Mail o Password incorrectos</string>
+    <string name="editprofile">Editar perfil</string>
+    <string name="desempeño">Desempeño</string>
+    <string name="newgame">Nuevo Juego</string>
+    <string name="estadisticas">Estadísticas</string>
+    <string name="desempeñocategoria">Desempeño por categoría</string>
+    <string name="errorLogin">E-mail o Password incorrectos</string>
     <string name="chat">Chat</string>
-    <string name="cambiarnombremail">Ingresa tu nuevo mail y nombre</string>
+    <string name="changephoto">Cambiar foto</string>
+    <string name="cambiarnombremail">Ingresa tu nuevo email y nombre</string>
     <string name="nombreApp">Cerebrotes</string>
     <string name="cambioPass">Cambio realizado</string>
     <string name="changepass">Cambiar contraseña</string>

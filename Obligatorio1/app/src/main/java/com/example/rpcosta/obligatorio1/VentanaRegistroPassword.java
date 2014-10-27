@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.rpcosta.obligatorio1.AsyncTask.RegistroUsuario;
 import com.example.rpcosta.obligatorio1.Interfaces.RegUsuario;
 
 

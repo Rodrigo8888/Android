@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.rpcosta.obligatorio1.AsyncTask.ValidacionLogin;
 import com.example.rpcosta.obligatorio1.Interfaces.ValUsuario;
 
 import java.util.ArrayList;
@@ -95,11 +96,13 @@ public class MyActivity extends Activity implements ValUsuario {
 
 
     @Override
-    public void validacion(Boolean correcto, String ide) {
+    public void validacion(Boolean correcto, String ide, String name, String mail) {
         if (correcto) {
             id=ide;
             Intent i = new Intent(MyActivity.this, MiPerfil.class);
+            i.putExtra("name",name);
             i.putExtra("id", id);
+            i.putExtra("mail",mail);
             startActivity(i);
             finish();
         } else {

@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rpcosta.ejercicio2.list"
+    android:id="@+id/relative">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:weightSum="2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="0.09">
+
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView"
+                android:src="@drawable/ic_launcher"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="176dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView4" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

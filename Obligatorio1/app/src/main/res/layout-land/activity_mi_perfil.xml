@@ -2,7 +2,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/black"
+    android:background="@android:color/darker_gray"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
@@ -15,7 +15,7 @@
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="250dp"
-            android:background="@android:color/black"
+            android:background="@android:color/darker_gray"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
 
@@ -29,7 +29,7 @@
 
                 <ImageView
                     android:layout_width="88dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="70dp"
                     android:layout_marginTop="20dp"
                     android:layout_height="83dp"
                     android:background="@drawable/perfilfoto"
@@ -38,6 +38,7 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
+                    android:layout_marginLeft="20dp"
                     android:layout_height="match_parent">
 
                     <TextView
@@ -61,66 +62,31 @@
                 </LinearLayout>
 
             </LinearLayout>
-            <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/roundedlayout"
-                    android:gravity="center"
-                    android:layout_height="100dp" android:layout_gravity="center_horizontal">
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="100dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:layout_height="100dp" android:id="@+id/linearLayout2">
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/imagebutton"
-                        android:background="@drawable/editprofile"
-                        android:id="@+id/imageView2" />
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/editprofile"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            android:id="@+id/textView7"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="100dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center"
-                        android:layout_height="fill_parent" android:layout_alignTop="@+id/linearLayout2"
-                        android:layout_toRightOf="@+id/linearLayout2" android:layout_toEndOf="@+id/linearLayout2">
-                    <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/imagebutton"
-                            android:background="@drawable/newgame"
-                            android:id="@+id/imageView9"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@android:color/white"
-                            android:text="@string/newgame"
-                            android:textStyle="bold"
-                            android:id="@+id/textView11"/>
-                </LinearLayout>
-            </RelativeLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/roundedlayout"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/editprofile"
+                    android:id="@+id/imageView2" />
+            </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/roundedlayout"
                     android:layout_width="fill_parent"
-                    android:layout_height="100dp" android:id="@+id/layoutStatistics">
+                    android:layout_height="100dp">
                 <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:background="@drawable/roundedlayout1"
                         android:layout_height="30dp">
                     <TextView
@@ -151,7 +117,7 @@
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:background="@drawable/roundedlayout1"
-                        android:layout_height="30dp" android:id="@+id/layouts">
+                        android:layout_height="30dp" android:id="@+id/layouts1">
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -188,7 +154,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="150dp"
                         android:id="@+id/imageView4"
                         android:layout_below="@+id/linearLayout"
                         android:layout_alignParentLeft="true"

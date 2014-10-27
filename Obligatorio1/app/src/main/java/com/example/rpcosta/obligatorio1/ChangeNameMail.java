@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.example.rpcosta.obligatorio1.AsyncTask.CambiarNombreMail;
+import com.example.rpcosta.obligatorio1.Interfaces.CambiarNomMail;
+
+import java.util.ArrayList;
 
 
-public class ChangeNameMail extends Activity {
+public class ChangeNameMail extends Activity implements CambiarNomMail{
     EditText name, mail;
     Button continuar;
     @Override
@@ -21,7 +25,7 @@ public class ChangeNameMail extends Activity {
         mail = (EditText)findViewById(R.id.editText2);
         continuar = (Button)findViewById(R.id.button);
         Bundle b = getIntent().getExtras();
-        String id = b.getString("id");
+        final String id = b.getString("id");
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +37,11 @@ public class ChangeNameMail extends Activity {
                     msj.show();
                 }
                 else{
-
+                    ArrayList<String> lista = new ArrayList<String>();
+                    lista.add(id);
+                    lista.add(name.getText().toString());
+                    lista.add(mail.getText().toString());
+                    new CambiarNombreMail(ChangeNameMail.this).execute(lista);
                 }
             }
         });
@@ -57,5 +65,18 @@ public class ChangeNameMail extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void resultado(Boolean done) {
+        if(done){
+            finish();
+        }
+        else{
+            String mensaje = getResources().getString(R.string.nuevoIntento);
+            Toast msj = Toast.makeText(ChangeNameMail.this,mensaje, Toast.LENGTH_SHORT);
+            msj.show();
+        }
+
     }
 }
