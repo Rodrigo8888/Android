@@ -25,6 +25,7 @@ import com.example.rpcosta.ejercicio4.R;
 import com.example.rpcosta.ejercicio4.Services.MyService;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Fragment3 extends Fragment implements DatosItems {
     private ManejadorImagenes manejador;
     private ImageView fav;
     private InterfaceFragment1 miCtx;
-    private Boolean transparence;
+    private Boolean transparence = false;
     private ArrayList<Item> favUser;
     private Button descripcion;
     private MyService service;
@@ -62,8 +63,6 @@ public class Fragment3 extends Fragment implements DatosItems {
         Bundle b = getArguments();
         final DBHelper helper = OpenHelperManager.getHelper(getActivity(), DBHelper.class);
         rootView = inflater.inflate(R.layout.fragment3, container, false);
-        transparence = false;
-        service = (MyService) service.getInstance();
         descripcion = (Button)rootView.findViewById(R.id.button2);
         final Item item = (Item) b.getSerializable("item");
         fav = (ImageView) rootView.findViewById(R.id.imageView3);
@@ -104,7 +103,11 @@ public class Fragment3 extends Fragment implements DatosItems {
                             msj.show();
                         }
                         else{
-                            Toast msj = Toast.makeText(getActivity(),"El ítem ya se encuentra en Favoritos",Toast.LENGTH_SHORT);
+                            DeleteBuilder<Item, Integer> deleteBuilder = dao.deleteBuilder();
+                            deleteBuilder.where().eq("id", item.getId());
+                            deleteBuilder.delete();
+                            fav.getBackground().setAlpha(50);
+                            Toast msj = Toast.makeText(getActivity(),"El ítem fue eliminado de Favoritos",Toast.LENGTH_SHORT);
                             msj.show();
                         }
                 } catch (SQLException e) {
