@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.example.rpcosta.ejercicio4.DataBase.DBHelper;
 import com.example.rpcosta.ejercicio4.R;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 
-public class MyActivity extends Activity{
+public class MyActivity extends Activity {
     private Button buscar;
     private EditText query;
     private static String Cquery = "query";
@@ -24,11 +26,13 @@ public class MyActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-        SharedPreferences prefs =getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        DBHelper helper = OpenHelperManager.getHelper(this, DBHelper.class);
+        helper.createDB();
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
-        String busqueda = prefs.getString(Cquery,null);
+        String busqueda = prefs.getString(Cquery, null);
         query = (EditText) findViewById(R.id.editText1);
-        if(busqueda!=null){
+        if (busqueda != null) {
             String search = busqueda.replace("%20", " ");
             query.setText(search);
         }
@@ -42,10 +46,10 @@ public class MyActivity extends Activity{
                 } else {
                     String busqueda = query.getText().toString();
                     String input = busqueda.replace(" ", "%20");
-                    editor.putString(Cquery,input);
+                    editor.putString(Cquery, input);
                     editor.commit();
                     Intent i = new Intent(MyActivity.this, MyActivity2.class);
-                    i.putExtra(Cquery,input);
+                    i.putExtra(Cquery, input);
                     startActivity(i);
 
                 }
@@ -72,7 +76,6 @@ public class MyActivity extends Activity{
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }

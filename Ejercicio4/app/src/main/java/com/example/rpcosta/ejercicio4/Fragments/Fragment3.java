@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,7 @@ public class Fragment3 extends Fragment implements DatosItems {
             e.printStackTrace();
         }
         db = new DBHelper(getActivity());
+        Log.d("resp", Environment.getExternalStorageDirectory().getAbsolutePath());
         if(favUser!=null) {
             for (int i = 0; (i < favUser.size()) && (!transparence); i++) {
                 if (favUser.get(i).getId().equalsIgnoreCase(item.getId())) {
