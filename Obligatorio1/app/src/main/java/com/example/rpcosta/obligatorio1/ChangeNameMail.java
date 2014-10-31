@@ -14,16 +14,17 @@ import com.example.rpcosta.obligatorio1.Interfaces.CambiarNomMail;
 import java.util.ArrayList;
 
 
-public class ChangeNameMail extends Activity implements CambiarNomMail{
+public class ChangeNameMail extends Activity implements CambiarNomMail {
     EditText name, mail;
     Button continuar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_name_mail);
-        name = (EditText)findViewById(R.id.editText);
-        mail = (EditText)findViewById(R.id.editText2);
-        continuar = (Button)findViewById(R.id.button);
+        name = (EditText) findViewById(R.id.editText);
+        mail = (EditText) findViewById(R.id.editText2);
+        continuar = (Button) findViewById(R.id.button);
         Bundle b = getIntent().getExtras();
         final String id = b.getString("id");
         continuar.setOnClickListener(new View.OnClickListener() {
@@ -31,12 +32,11 @@ public class ChangeNameMail extends Activity implements CambiarNomMail{
             public void onClick(View v) {
                 String nombre = name.getText().toString();
                 String email = mail.getText().toString();
-                if(nombre.isEmpty()||email.isEmpty()){
+                if (nombre.isEmpty() || email.isEmpty()) {
                     String mensaje = getResources().getString(R.string.mensajeErrorEmpty);
-                    Toast msj = Toast.makeText(ChangeNameMail.this,mensaje, Toast.LENGTH_SHORT);
+                    Toast msj = Toast.makeText(ChangeNameMail.this, mensaje, Toast.LENGTH_SHORT);
                     msj.show();
-                }
-                else{
+                } else {
                     ArrayList<String> lista = new ArrayList<String>();
                     lista.add(id);
                     lista.add(name.getText().toString());
@@ -69,12 +69,11 @@ public class ChangeNameMail extends Activity implements CambiarNomMail{
 
     @Override
     public void resultado(Boolean done) {
-        if(done){
+        if (done) {
             finish();
-        }
-        else{
+        } else {
             String mensaje = getResources().getString(R.string.nuevoIntento);
-            Toast msj = Toast.makeText(ChangeNameMail.this,mensaje, Toast.LENGTH_SHORT);
+            Toast msj = Toast.makeText(ChangeNameMail.this, mensaje, Toast.LENGTH_SHORT);
             msj.show();
         }
 

@@ -1,9 +1,7 @@
 package com.example.rpcosta.obligatorio1.AsyncTask;
 
 import android.os.AsyncTask;
-
 import com.example.rpcosta.obligatorio1.Interfaces.RegUsuario;
-
 import com.example.rpcosta.obligatorio1.Jugador;
 import org.json.JSONObject;
 
@@ -16,10 +14,11 @@ import java.util.Scanner;
 /**
  * Created by rpcosta on 21/10/14.
  */
-public class RegistroUsuario extends AsyncTask<Jugador,Jugador,String> {
+public class RegistroUsuario extends AsyncTask<Jugador, Jugador, String> {
     String url;
     RegUsuario dto;
     String result;
+
     public RegistroUsuario(RegUsuario activity) {
         dto = activity;
     }
@@ -29,7 +28,7 @@ public class RegistroUsuario extends AsyncTask<Jugador,Jugador,String> {
 
         try {
             url = "http://ortapipreguntados.herokuapp.com/users/new/?";
-            String urlParameters = "name="+params[0].getNombre()+"&mail="+params[0].getMail()+"&password="+params[0].getPassword();
+            String urlParameters = "name=" + params[0].getNombre() + "&mail=" + params[0].getMail() + "&password=" + params[0].getPassword();
             String request = url;
             URL url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

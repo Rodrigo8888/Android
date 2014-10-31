@@ -10,28 +10,29 @@ import android.widget.Button;
 
 
 public class EditarDatos extends Activity {
-    private Button changePass,changeNameEmail;
+    private Button changePass, changeNameEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_datos);
-        changeNameEmail = (Button)findViewById(R.id.button);
-        changePass = (Button)findViewById(R.id.button2);
+        changeNameEmail = (Button) findViewById(R.id.button);
+        changePass = (Button) findViewById(R.id.button2);
         Bundle b = getIntent().getExtras();
         final String id = b.getString("id");
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(EditarDatos.this,OlvidoPass.class);
-                i.putExtra("id",id);
+                Intent i = new Intent(EditarDatos.this, OlvidoPass.class);
+                i.putExtra("id", id);
                 startActivity(i);
             }
         });
         changeNameEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(EditarDatos.this,ChangeNameMail.class);
-                i.putExtra("id",id);
+                Intent i = new Intent(EditarDatos.this, ChangeNameMail.class);
+                i.putExtra("id", id);
                 startActivity(i);
 
             }

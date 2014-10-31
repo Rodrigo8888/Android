@@ -55,10 +55,9 @@ public class Fragment2 extends Fragment implements Datos {
         View rootView = inflater.inflate(R.layout.fragment2, container, false);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
         offset = 0;
-        url = "https://api.mercadolibre.com/sites/MLA/search?q=";
+        url = "https://api.mercadolibre.com/sites/MLU/search?q=";
         lista = new ArrayList<Item>();
         miLista = (ListView) rootView.findViewById(R.id.listView1);
-       // adapter = new AdapterList(getActivity(), R.id.listView1, lista);
         if (savedInstanceState != null) {
             EditText texto = (EditText) rootView.findViewById(R.id.editText1);
             miLista = (ListView) rootView.findViewById(R.id.listView1);
@@ -90,7 +89,7 @@ public class Fragment2 extends Fragment implements Datos {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if (firstVisibleItem + visibleItemCount >= offset + max) {
                     //dialogo = ProgressDialog.show(getActivity(), "", "Buscando...", true);
-                    url = "https://api.mercadolibre.com/sites/MLA/search?q=";
+                    url = "https://api.mercadolibre.com/sites/MLU/search?q=";
                     offset += max;
                     if (miLista.getAdapter() == null) {
                         miLista.setAdapter(adapter);
@@ -104,7 +103,7 @@ public class Fragment2 extends Fragment implements Datos {
         miLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                context.AvisoClick(lista.get(position).getId(),3);
+                context.AvisoClick(lista.get(position),3);
             }
         });
 

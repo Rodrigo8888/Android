@@ -15,14 +15,14 @@ import java.util.ArrayList;
 
 
 public class MiPerfil extends Activity implements Estadistica {
-    private ImageView editar,nuevoJuego;
+    private ImageView editar, nuevoJuego;
     private TextView nombreJugador, mailJugador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
-        nuevoJuego = (ImageView)findViewById(R.id.imageView9);
+        nuevoJuego = (ImageView) findViewById(R.id.imageView9);
         nombreJugador = (TextView) findViewById(R.id.textView);
         mailJugador = (TextView) findViewById(R.id.textView2);
         Bundle b = getIntent().getExtras();
@@ -44,7 +44,7 @@ public class MiPerfil extends Activity implements Estadistica {
         nuevoJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MiPerfil.this,VentanaDesafios.class);
+                Intent i = new Intent(MiPerfil.this, VentanaDesafios.class);
                 startActivity(i);
             }
         });

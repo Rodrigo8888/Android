@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.rpcosta.obligatorio1.AsyncTask.RegistroUsuario;
 import com.example.rpcosta.obligatorio1.Interfaces.RegUsuario;
 
@@ -30,28 +29,27 @@ public class VentanaRegistroPassword extends Activity implements RegUsuario {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_registro_password);
-        pass = (EditText)findViewById(R.id.editText);
+        pass = (EditText) findViewById(R.id.editText);
 
         Bundle b = getIntent().getExtras();
         nombre = b.getString("Nombre");
         mail = b.getString("Mail");
-        continuar=(Button)findViewById(R.id.button);
+        continuar = (Button) findViewById(R.id.button);
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                contraseña=pass.getText().toString();
+                contraseña = pass.getText().toString();
                 error = getResources().getString(R.string.mensajeErrorEmpty);
-                if(contraseña.isEmpty()){
-                    mensaje=Toast.makeText(VentanaRegistroPassword.this,error,Toast.LENGTH_SHORT);
+                if (contraseña.isEmpty()) {
+                    mensaje = Toast.makeText(VentanaRegistroPassword.this, error, Toast.LENGTH_SHORT);
                     mensaje.show();
-                }
-                else{
+                } else {
                     Jugador j = new Jugador();
                     j.setMail(mail);
                     j.setNombre(nombre);
                     j.setPassword(contraseña);
                     new RegistroUsuario(VentanaRegistroPassword.this).execute(j);
-                    Intent i = new Intent(VentanaRegistroPassword.this,MyActivity.class);
+                    Intent i = new Intent(VentanaRegistroPassword.this, MyActivity.class);
                     startActivity(i);
                     finish();
                 }
@@ -84,8 +82,8 @@ public class VentanaRegistroPassword extends Activity implements RegUsuario {
 
     @Override
     public void result(String results) {
-        error=results;
-        mensaje=Toast.makeText(VentanaRegistroPassword.this,error,Toast.LENGTH_SHORT);
+        error = results;
+        mensaje = Toast.makeText(VentanaRegistroPassword.this, error, Toast.LENGTH_SHORT);
         mensaje.show();
     }
 }

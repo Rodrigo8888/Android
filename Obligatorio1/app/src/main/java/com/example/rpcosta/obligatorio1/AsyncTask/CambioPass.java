@@ -2,9 +2,7 @@ package com.example.rpcosta.obligatorio1.AsyncTask;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.example.rpcosta.obligatorio1.Interfaces.ChangePass;
-
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
@@ -17,7 +15,7 @@ import java.util.Scanner;
 /**
  * Created by rpcosta on 21/10/14.
  */
-public class CambioPass extends AsyncTask<ArrayList<String> ,Boolean,Boolean >{
+public class CambioPass extends AsyncTask<ArrayList<String>, Boolean, Boolean> {
     Boolean result;
     ChangePass dto;
 
@@ -55,9 +53,9 @@ public class CambioPass extends AsyncTask<ArrayList<String> ,Boolean,Boolean >{
             InputStreamReader in = new InputStreamReader(connection.getInputStream());
             JSONObject json = new JSONObject(getResponseText(in));
             boolean respuesta = (Boolean) json.getBoolean("success");
-            Log.v("resp",json.toString());
+            Log.v("resp", json.toString());
             if (respuesta == true) {
-                 result = true;
+                result = true;
             } else {
                 result = false;
             }

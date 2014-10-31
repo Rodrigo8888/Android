@@ -24,11 +24,13 @@
     <string name="contraseña1">Este es la Contraseña con la cual iniciarás sesión</string>
     <string name="mail">Correo Electrónico</string>
     <string name="editarNombre">Cambiar Nombre y E-mail</string>
-    <string name="finalizar">Finalizar</string>    
+    <string name="finalizar">Finalizar</string>
     <string name="registroOK">Registro correcto</string>
     <string name="correo">Ingresa tu dirección de \n correo electrónico</string>
     <string name="registro">Registro</string>
-    <string name="correo1">Usarás este correo electrónico cuando inicies \n sesión y si alguna vez tienes que cambiar la \n contraseña</string>
+    <string name="correo1">Usarás este correo electrónico cuando inicies \n sesión y si alguna vez tienes que cambiar la
+        \n contraseña
+    </string>
     <string name="olvido">¿Olvidaste tu contraseña?</string>
     <string name="continuar">Continuar</string>
     <string name="registroNombre">¿Cómo es tu nombre?</string>

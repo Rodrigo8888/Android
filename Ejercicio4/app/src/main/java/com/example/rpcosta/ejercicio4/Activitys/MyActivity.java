@@ -29,7 +29,8 @@ public class MyActivity extends Activity{
         String busqueda = prefs.getString(Cquery,null);
         query = (EditText) findViewById(R.id.editText1);
         if(busqueda!=null){
-            query.setText(busqueda);
+            String search = busqueda.replace("%20", " ");
+            query.setText(search);
         }
         buscar = (Button) findViewById(R.id.button1);
         buscar.setOnClickListener(new View.OnClickListener() {
@@ -39,18 +40,18 @@ public class MyActivity extends Activity{
                     Toast msj = Toast.makeText(MyActivity.this, "El campo no puede estar vacío", Toast.LENGTH_SHORT);
                     msj.show();
                 } else {
-                    editor.putString(Cquery,query.getText().toString());
+                    String busqueda = query.getText().toString();
+                    String input = busqueda.replace(" ", "%20");
+                    editor.putString(Cquery,input);
                     editor.commit();
                     Intent i = new Intent(MyActivity.this, MyActivity2.class);
-                    i.putExtra(Cquery,query.getText().toString());
+                    i.putExtra(Cquery,input);
                     startActivity(i);
 
                 }
             }
         });
     }
-
-
 
 
     @Override

@@ -7,4 +7,5 @@ import com.example.rpcosta.ejercicio4.Dominio.Item;
  */
 public interface DatosItems {
     public void refreshdatos(Item item);
+    public void refreshDescripcion(String desc);
 }

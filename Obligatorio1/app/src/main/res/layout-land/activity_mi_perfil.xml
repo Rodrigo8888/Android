@@ -1,55 +1,55 @@
 <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@android:color/darker_gray"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/darker_gray"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView2" android:fillViewport="false">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView2" android:fillViewport="false">
 
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="250dp"
-            android:background="@android:color/darker_gray"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:background="@android:color/darker_gray"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_height="120dp"
-                android:background="@drawable/roundedlayout"
-                android:weightSum="1">
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/roundedlayout"
+                    android:weightSum="1">
 
                 <ImageView
-                    android:layout_width="88dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_height="83dp"
-                    android:background="@drawable/perfilfoto"
-                    android:id="@+id/imageView" />
+                        android:layout_width="88dp"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="83dp"
+                        android:background="@drawable/perfilfoto"
+                        android:id="@+id/imageView"/>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_marginLeft="20dp"
-                    android:layout_height="match_parent">
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="match_parent">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="New Text"
-                        android:id="@+id/textView" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:text="New Text"
+                            android:id="@+id/textView"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -64,19 +64,19 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/roundedlayout"
-                android:layout_height="match_parent">
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/roundedlayout"
+                    android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/editprofile"
-                    android:id="@+id/imageView2" />
+                        android:layout_width="70dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/editprofile"
+                        android:id="@+id/imageView2"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"

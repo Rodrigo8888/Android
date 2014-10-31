@@ -36,8 +36,8 @@ public class CambiarNombreMail extends AsyncTask<ArrayList<String>, String, Bool
 
         try {
             url = "http://ortapipreguntados.herokuapp.com/users/edit/?";
-            String urlParameters = "id=" + params[0].get(0) + "&name=" + params[0].get(1)+"&mail=" + params[0].get(2);
-            Log.v("urlParams= ",urlParameters);
+            String urlParameters = "id=" + params[0].get(0) + "&name=" + params[0].get(1) + "&mail=" + params[0].get(2);
+            Log.v("urlParams= ", urlParameters);
             String request = url;
             URL url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -63,8 +63,8 @@ public class CambiarNombreMail extends AsyncTask<ArrayList<String>, String, Bool
             wr.close();
             connection.disconnect();
 
-        } catch (Exception e){
-            Log.e("Error",e.getMessage());
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
         }
 
         return result;

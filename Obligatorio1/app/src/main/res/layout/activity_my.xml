@@ -1,86 +1,86 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/black"
-    tools:context=".MyActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                tools:context=".MyActivity">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="30dp"
-        android:id="@+id/linearLayout">
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="30dp"
+            android:id="@+id/linearLayout">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/cerebrotes2"
-            android:id="@+id/imageView"
-            android:layout_gravity="center_horizontal" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cerebrotes2"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="150dp"
-        android:layout_below="@+id/linearLayout"
-        android:id="@+id/linearLayout2">
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/linearLayout"
+            android:id="@+id/linearLayout2">
 
         <EditText
-            android:layout_width="320dp"
-            android:layout_height="35dp"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"
-            android:hint="@string/Usuario"
-            android:background="@drawable/rounded"
-            android:id="@+id/editText"
-            android:layout_gravity="center_horizontal" />
+                android:layout_width="320dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Usuario"
+                android:background="@drawable/rounded"
+                android:id="@+id/editText"
+                android:layout_gravity="center_horizontal"/>
 
         <EditText
-            android:layout_width="320dp"
-            android:inputType="textPassword"
-            android:layout_height="35dp"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:hint="@string/Contraseña"
-            android:background="@drawable/rounded"
-            android:id="@+id/editText2"
-            android:layout_gravity="center_horizontal" />
+                android:layout_width="320dp"
+                android:inputType="textPassword"
+                android:layout_height="35dp"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/Contraseña"
+                android:background="@drawable/rounded"
+                android:id="@+id/editText2"
+                android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_alignStart="@+id/linearLayout2">
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignStart="@+id/linearLayout2">
 
         <Button
-            android:layout_width="320dp"
-            android:layout_height="35dp"
-            android:text="@string/boton"
-            android:id="@+id/button"
-            android:textSize="15sp"
-            android:background="@drawable/button"
-            android:layout_gravity="center_horizontal" />
+                android:layout_width="320dp"
+                android:layout_height="35dp"
+                android:text="@string/boton"
+                android:id="@+id/button"
+                android:textSize="15sp"
+                android:background="@drawable/button"
+                android:layout_gravity="center_horizontal"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textColor="@android:color/holo_green_light"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="@string/registro"
-            android:id="@+id/button3"
-            android:layout_gravity="center_horizontal" />
+                android:layout_width="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textColor="@android:color/holo_green_light"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/registro"
+                android:id="@+id/button3"
+                android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

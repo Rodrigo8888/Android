@@ -1,14 +1,14 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;import android.content.Intent;
-
+import android.widget.Toast;
 
 
 public class VentanaRegistroNombre extends Activity {
@@ -26,20 +26,19 @@ public class VentanaRegistroNombre extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_registro);
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        name = (EditText)findViewById(R.id.editText);
-        continuar=(Button)findViewById(R.id.button);
+        name = (EditText) findViewById(R.id.editText);
+        continuar = (Button) findViewById(R.id.button);
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombre=name.getText().toString();
+                nombre = name.getText().toString();
                 error = getResources().getString(R.string.mensajeErrorEmpty);
-                if(nombre.isEmpty()){
-                    mensaje=Toast.makeText(VentanaRegistroNombre.this,error,Toast.LENGTH_SHORT);
+                if (nombre.isEmpty()) {
+                    mensaje = Toast.makeText(VentanaRegistroNombre.this, error, Toast.LENGTH_SHORT);
                     mensaje.show();
-                }
-                else{
-                    Intent i = new Intent(VentanaRegistroNombre.this,VentanaRegistroMail.class);
-                    i.putExtra("Nombre",nombre);
+                } else {
+                    Intent i = new Intent(VentanaRegistroNombre.this, VentanaRegistroMail.class);
+                    i.putExtra("Nombre", nombre);
                     startActivity(i);
 
                 }

@@ -2,15 +2,14 @@ package com.example.rpcosta.ejercicio4.Asynctask;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import com.example.rpcosta.ejercicio4.Interfaces.DatosItems;
 import com.example.rpcosta.ejercicio4.Dominio.Item;
+import com.example.rpcosta.ejercicio4.Interfaces.DatosItems;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Scanner;
 
 /**
  * Created by rpcosta on 16/10/14.
@@ -44,10 +43,6 @@ public class ItemDescription extends AsyncTask<String, String, Item> {
             Log.e("Error: ", e.getMessage());
         }
         return it;
-    }
-
-    private String getResponseText(InputStream inStream) {
-        return new Scanner(inStream).useDelimiter("\\A").next();
     }
 
 }

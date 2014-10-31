@@ -24,6 +24,7 @@ public class AdapterList extends ArrayAdapter<Item> {
     private LayoutInflater inflater;
     private ManejadorImagenes manejador;
 
+
     public AdapterList(Context context, int resc, ArrayList<Item> objects) {
         super(context, resc, objects);
         lista = objects;
@@ -54,7 +55,7 @@ public class AdapterList extends ArrayAdapter<Item> {
 
         }
         holder.title.setText(item.getTitle());
-        holder.price.setText("Precio: " + item.getPrice());
+        holder.price.setText("$"+item.getPrice());
         if (actividad.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             if (item.getSubtitle() == null) {
                 holder.subTitle.setText("Sin subtitulo");

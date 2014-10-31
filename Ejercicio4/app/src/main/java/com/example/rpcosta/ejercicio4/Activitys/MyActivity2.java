@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.example.rpcosta.ejercicio4.Dominio.Item;
 import com.example.rpcosta.ejercicio4.Fragments.Fragment2;
 import com.example.rpcosta.ejercicio4.Fragments.Fragment3;
 import com.example.rpcosta.ejercicio4.Interfaces.InterfaceFragment1;
@@ -54,12 +55,12 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
     }
 
     @Override
-    public void AvisoClick(String item, int fgmt) {
+    public void AvisoClick(Item item, int fgmt) {
         frag = fgmt;
         f3 = new Fragment3();
         getFragmentManager().beginTransaction().replace(R.id.contenedor, f3).commit();
         Bundle b = new Bundle();
-        b.putString("item", item);
+        b.putSerializable("item",item);
         f3.setArguments(b);
 
 
@@ -76,6 +77,10 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
             b.putString("query", q);
             f2.setArguments(b);
             getFragmentManager().beginTransaction().replace(R.id.contenedor, f2).commit();
+            frag=2;
+        }
+        else{
+            finish();
         }
     }
 }

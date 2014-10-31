@@ -9,50 +9,50 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class VentanaInicio extends Activity {
-    private int progreso=0;
+    private int progreso = 0;
     private int paso = 500;
     private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_inicio);
-        mProgressBar=(ProgressBar) findViewById(R.id.progressbar);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
     }
 
-    private void cuentaAtras(long milisegundos){
+    private void cuentaAtras(long milisegundos) {
 
         CountDownTimer mCountDownTimer;
-        mProgressBar.setMax((int)milisegundos);
+        mProgressBar.setMax((int) milisegundos);
         mProgressBar.setProgress(paso);
 
-        mCountDownTimer=new CountDownTimer(milisegundos, paso) {
+        mCountDownTimer = new CountDownTimer(milisegundos, paso) {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.v("Log_tag", "Tick of Progress"+ progreso+ millisUntilFinished);
-                progreso+=paso;
+                Log.v("Log_tag", "Tick of Progress" + progreso + millisUntilFinished);
+                progreso += paso;
                 mProgressBar.setProgress(progreso);
             }
 
             @Override
             public void onFinish() {
-                progreso+= paso;
+                progreso += paso;
                 mProgressBar.setProgress(progreso);
                 mProgressBar.setVisibility(View.INVISIBLE);
-                Intent i = new Intent (VentanaInicio.this,MyActivity.class);
+                Intent i = new Intent(VentanaInicio.this, MyActivity.class);
                 startActivity(i);
                 Toast.makeText(getApplicationContext(), getString(R.string.bienvenido), Toast.LENGTH_SHORT).show();
-                finish();}
+                finish();
+            }
         };
 
         mCountDownTimer.start();
     }
-
 
 
     @Override

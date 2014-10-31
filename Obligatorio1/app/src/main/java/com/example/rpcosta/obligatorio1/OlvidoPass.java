@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.rpcosta.obligatorio1.AsyncTask.CambioPass;
 import com.example.rpcosta.obligatorio1.Interfaces.ChangePass;
 
@@ -67,15 +66,14 @@ public class OlvidoPass extends Activity implements ChangePass {
 
     @Override
     public void result(Boolean results) {
-        if(results){
+        if (results) {
             String mensaje = getResources().getString(R.string.cambioPass);
-            Toast msj = Toast.makeText(OlvidoPass.this,mensaje,Toast.LENGTH_SHORT);
+            Toast msj = Toast.makeText(OlvidoPass.this, mensaje, Toast.LENGTH_SHORT);
             msj.show();
             finish();
-        }
-        else{
+        } else {
             String mensaje = getResources().getString(R.string.nuevoIntento);
-            Toast msj = Toast.makeText(OlvidoPass.this,mensaje,Toast.LENGTH_SHORT);
+            Toast msj = Toast.makeText(OlvidoPass.this, mensaje, Toast.LENGTH_SHORT);
             msj.show();
         }
     }

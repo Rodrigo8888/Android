@@ -29,7 +29,7 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
-        dto.validacion(aBoolean,id,name,mail);
+        dto.validacion(aBoolean, id, name, mail);
     }
 
 
@@ -72,8 +72,8 @@ public class ValidacionLogin extends AsyncTask<ArrayList<String>, String, Boolea
 
         }
 
-    return result;
-}
+        return result;
+    }
 
     private String getResponseText(InputStreamReader inStream) {
         return new Scanner(inStream).useDelimiter("\\A").next();

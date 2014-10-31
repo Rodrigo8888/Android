@@ -1,18 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.rpcosta.obligatorio1.EditarDatos">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.rpcosta.obligatorio1.EditarDatos">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:background="@android:color/black"
-        android:layout_height="fill_parent"
-        android:weightSum="1" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" android:id="@+id/lout">
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@android:color/black"
+            android:layout_height="fill_parent"
+            android:weightSum="1" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:id="@+id/lout">
 
         <LinearLayout
                 android:orientation="vertical"
@@ -48,14 +48,14 @@
                 android:background="@drawable/roundedlayout"
                 android:layout_height="100dp" android:layout_weight="0.04">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="30dp"
-                android:text="@string/editarNombre"
-                android:id="@+id/button"
-                android:layout_gravity="center_horizontal"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/editarNombre"
+                    android:id="@+id/button"
+                    android:layout_gravity="center_horizontal"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
@@ -65,14 +65,14 @@
                 android:layout_height="100dp"
                 android:layout_weight="0.04">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="30dp"
-                android:text="@string/changepass"
-                android:id="@+id/button2"
-                android:layout_gravity="center_horizontal"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/changepass"
+                    android:id="@+id/button2"
+                    android:layout_gravity="center_horizontal"/>
         </LinearLayout>
         <ImageView
                 android:layout_width="160dp"
