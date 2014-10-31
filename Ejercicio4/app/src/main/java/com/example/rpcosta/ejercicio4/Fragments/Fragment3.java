@@ -22,6 +22,7 @@ import com.example.rpcosta.ejercicio4.Dominio.Item;
 import com.example.rpcosta.ejercicio4.Interfaces.DatosItems;
 import com.example.rpcosta.ejercicio4.Interfaces.InterfaceFragment1;
 import com.example.rpcosta.ejercicio4.R;
+import com.example.rpcosta.ejercicio4.Services.MyService;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
@@ -39,11 +40,11 @@ public class Fragment3 extends Fragment implements DatosItems {
     private TextView titulo, subtitulo, precio, cantidad;
     private ManejadorImagenes manejador;
     private ImageView fav;
-    private DBHelper db;
     private InterfaceFragment1 miCtx;
     private Boolean transparence;
     private ArrayList<Item> favUser;
     private Button descripcion;
+    private MyService service;
     Dao dao;
 
     @Override
@@ -62,6 +63,7 @@ public class Fragment3 extends Fragment implements DatosItems {
         final DBHelper helper = OpenHelperManager.getHelper(getActivity(), DBHelper.class);
         rootView = inflater.inflate(R.layout.fragment3, container, false);
         transparence = false;
+        service = (MyService) service.getInstance();
         descripcion = (Button)rootView.findViewById(R.id.button2);
         final Item item = (Item) b.getSerializable("item");
         fav = (ImageView) rootView.findViewById(R.id.imageView3);
@@ -72,7 +74,6 @@ public class Fragment3 extends Fragment implements DatosItems {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        db = new DBHelper(getActivity());
         Log.d("resp", Environment.getExternalStorageDirectory().getAbsolutePath());
         if(favUser!=null) {
             for (int i = 0; (i < favUser.size()) && (!transparence); i++) {
