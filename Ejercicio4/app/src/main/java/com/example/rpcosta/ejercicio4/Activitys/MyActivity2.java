@@ -27,8 +27,8 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
             f3 = new Fragment3();
             Bundle b = new Bundle();
             b.putSerializable("ItemS",itemS);
-            getFragmentManager().beginTransaction().replace(R.id.contenedor, f3).commit();
             f3.setArguments(b);
+            getFragmentManager().beginTransaction().replace(R.id.contenedor, f3).commit();
 
         }
         else {

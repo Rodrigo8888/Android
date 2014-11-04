@@ -41,7 +41,7 @@ public class MyService extends IntentService {
     private Runnable updateData = new Runnable() {
         public void run() {
             checkear();
-            handler.postDelayed(updateData, 1000 * 20);
+            handler.postDelayed(updateData, 3600);
         }
     };
 
@@ -59,18 +59,18 @@ public class MyService extends IntentService {
         }
         //Avisar si el item finaliza el día de hoy
         Calendar c = Calendar.getInstance();
-        for (int i = 20; i < lista.size(); i++) {
-            int horaItem = lista.get(i).getStop_time().getHours();
-            int diaitem = lista.get(i).getStop_time().getDay();
-            if (diaitem == c.getTime().getDay()) {
-                //avisar que estamos en el dia en que finaliza el item
-                int hour = c.get(Calendar.HOUR);
-                int itemHour = lista.get(i).getStop_time().getHours();
-                //if (hour == itemHour + 1) {
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getStop_time() != null) {
+                int horaItem = lista.get(i).getStop_time().getHours();
+                int diaitem = lista.get(i).getStop_time().getDay();
+                if (diaitem == c.getTime().getDay()) {
+                    //avisar que estamos en el dia en que finaliza el item
+                    int hour = c.get(Calendar.HOUR);
+                    if (hour == horaItem + 1) {
                     //Creo notificación
                     Intent inte = new Intent(MyService.this, MyActivity2.class);
                     inte.putExtra("ID", lista.get(i).getId());
-                    PendingIntent pIntent = PendingIntent.getActivity(this, 0, inte, 0);
+                    PendingIntent pIntent = PendingIntent.getActivity(this, lista.get(i).getId().hashCode(), inte,PendingIntent.FLAG_ONE_SHOT);
                     Notification n = new Notification.Builder(this)
                             .setContentTitle("Su favorito finaliza en 1hs, no lo dejes pasar!")
                             .setSmallIcon(R.drawable.notificacion)
@@ -79,16 +79,15 @@ public class MyService extends IntentService {
                     NotificationManager notificationManager =
                             (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-                    notificationManager.notify(0, n);
+                    notificationManager.notify(lista.get(i).getId().hashCode(), n);
                     n.defaults |= Notification.DEFAULT_LIGHTS;
-
-                System.out.print("Error en el Intent");
 
 
                 }
             }
 
-        //}
+            }
+        }
     }
 
 
@@ -97,7 +96,7 @@ public class MyService extends IntentService {
         while (true) {
             checkear();
             try {
-                Thread.sleep(1000 * 20);
+                Thread.sleep(3600);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
