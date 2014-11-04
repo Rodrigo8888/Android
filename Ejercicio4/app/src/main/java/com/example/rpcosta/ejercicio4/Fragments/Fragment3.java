@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,6 @@ import com.example.rpcosta.ejercicio4.Dominio.Item;
 import com.example.rpcosta.ejercicio4.Interfaces.DatosItems;
 import com.example.rpcosta.ejercicio4.Interfaces.InterfaceFragment1;
 import com.example.rpcosta.ejercicio4.R;
-import com.example.rpcosta.ejercicio4.Services.MyService;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
@@ -45,7 +43,6 @@ public class Fragment3 extends Fragment implements DatosItems {
     private Boolean transparence = false;
     private ArrayList<Item> favUser;
     private Button descripcion;
-    private MyService service;
     Dao dao;
 
     @Override
@@ -61,6 +58,7 @@ public class Fragment3 extends Fragment implements DatosItems {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         Bundle b = getArguments();
+        final Item itemS = (Item)b.getSerializable("ItemS");
         final DBHelper helper = OpenHelperManager.getHelper(getActivity(), DBHelper.class);
         rootView = inflater.inflate(R.layout.fragment3, container, false);
         descripcion = (Button)rootView.findViewById(R.id.button2);
@@ -73,7 +71,6 @@ public class Fragment3 extends Fragment implements DatosItems {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Log.d("resp", Environment.getExternalStorageDirectory().getAbsolutePath());
         if(favUser!=null) {
             for (int i = 0; (i < favUser.size()) && (!transparence); i++) {
                 if (favUser.get(i).getId().equalsIgnoreCase(item.getId())) {
@@ -86,6 +83,9 @@ public class Fragment3 extends Fragment implements DatosItems {
         }
         else{
             fav.getBackground().setAlpha(50);
+        }
+        if(itemS!=null){
+            item.setId(itemS.getId());
         }
         manejador = ManejadorImagenes.getInstance();
         url = "https://api.mercadolibre.com/items/";
@@ -101,6 +101,7 @@ public class Fragment3 extends Fragment implements DatosItems {
                             dao.create(item);
                             Toast msj = Toast.makeText(getActivity(),"El ítem fue agregado a Favoritos",Toast.LENGTH_SHORT);
                             msj.show();
+                            transparence = true;
                         }
                         else{
                             DeleteBuilder<Item, Integer> deleteBuilder = dao.deleteBuilder();
@@ -109,6 +110,8 @@ public class Fragment3 extends Fragment implements DatosItems {
                             fav.getBackground().setAlpha(50);
                             Toast msj = Toast.makeText(getActivity(),"El ítem fue eliminado de Favoritos",Toast.LENGTH_SHORT);
                             msj.show();
+                            transparence = false;
+
                         }
                 } catch (SQLException e) {
                     Log.e("Error", "Error guardando favorito");

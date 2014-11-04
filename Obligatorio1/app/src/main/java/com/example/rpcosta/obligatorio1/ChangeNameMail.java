@@ -1,6 +1,7 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class ChangeNameMail extends Activity implements CambiarNomMail {
     EditText name, mail;
     Button continuar;
+    ProgressDialog dialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class ChangeNameMail extends Activity implements CambiarNomMail {
                     lista.add(id);
                     lista.add(name.getText().toString());
                     lista.add(mail.getText().toString());
+                    dialog = ProgressDialog.show(ChangeNameMail.this, "", "Realizando el cambio...", true);
                     new CambiarNombreMail(ChangeNameMail.this).execute(lista);
                 }
             }
@@ -70,6 +73,7 @@ public class ChangeNameMail extends Activity implements CambiarNomMail {
     @Override
     public void resultado(Boolean done) {
         if (done) {
+            dialog.dismiss();
             finish();
         } else {
             String mensaje = getResources().getString(R.string.nuevoIntento);

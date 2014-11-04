@@ -1,30 +1,33 @@
-package com.example.rpcosta.ejercicio4.Activitys;
+package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebView;
-import com.example.rpcosta.ejercicio4.R;
+import android.view.View;
+import android.widget.Button;
 
-public class DescripcionItem extends Activity {
-    WebView descripcion;
+
+public class Arte extends Activity {
+    private Button jugar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_descripcion_item);
-        descripcion = (WebView)findViewById(R.id.webView);
-        descripcion.getSettings().setBuiltInZoomControls(true); //Enable Multitouch if supported by ROM
-        Bundle b = getIntent().getExtras();
-        String desc = b.getString("descripcion");
-        descripcion.loadData(desc, "text/html", "UTF-8");
+        setContentView(R.layout.activity_arte);
+        jugar = (Button)findViewById(R.id.button2);
+        jugar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Llamar a las preguntas, traer la pregunta y comenzar el conteo del tiempo, pasando a la actyvity preguntas que se encargue de mostrar las preguntas
+            }
+        });
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.descripcion_item, menu);
+        getMenuInflater().inflate(R.menu.arte, menu);
         return true;
     }
 

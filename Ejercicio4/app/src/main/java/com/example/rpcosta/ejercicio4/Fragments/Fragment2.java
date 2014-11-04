@@ -2,6 +2,7 @@ package com.example.rpcosta.ejercicio4.Fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import com.example.rpcosta.ejercicio4.Activitys.ErrorSearch;
 import com.example.rpcosta.ejercicio4.Asynctask.Busqueda;
 import com.example.rpcosta.ejercicio4.Dominio.AdapterList;
 import com.example.rpcosta.ejercicio4.Dominio.Item;
@@ -128,6 +130,12 @@ public class Fragment2 extends Fragment implements Datos {
         if (miLista.getAdapter() == null) {
             miLista.setAdapter(adapter);
         }
+        if(lista.size()==0){
+            Intent i = new Intent(getActivity(), ErrorSearch.class);
+            startActivity(i);
+        }
         adapter.notifyDataSetChanged();
     }
+
+
 }

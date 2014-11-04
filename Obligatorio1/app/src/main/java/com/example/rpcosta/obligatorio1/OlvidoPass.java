@@ -1,6 +1,7 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 public class OlvidoPass extends Activity implements ChangePass {
     private Button enviar;
     EditText newPass;
+    ProgressDialog dialog = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class OlvidoPass extends Activity implements ChangePass {
                     Toast msj = Toast.makeText(OlvidoPass.this, error, Toast.LENGTH_SHORT);
                     msj.show();
                 } else {
+                    dialog = ProgressDialog.show(OlvidoPass.this, "", "Realizando el cambio...", true);
                     ArrayList<String> lista = new ArrayList<String>();
                     lista.add(id);
                     lista.add(pass);
@@ -67,6 +71,7 @@ public class OlvidoPass extends Activity implements ChangePass {
     @Override
     public void result(Boolean results) {
         if (results) {
+            dialog.dismiss();
             String mensaje = getResources().getString(R.string.cambioPass);
             Toast msj = Toast.makeText(OlvidoPass.this, mensaje, Toast.LENGTH_SHORT);
             msj.show();

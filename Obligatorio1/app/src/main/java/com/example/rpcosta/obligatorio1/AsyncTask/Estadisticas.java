@@ -38,7 +38,6 @@ public class Estadisticas extends AsyncTask<String, String, ArrayList<ObjetoEsta
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(connection.getInputStream());
             JSONObject json = new JSONObject(getResponseText(in));
-            Log.v("respuesta",json.toString());
             JSONObject datos = json.getJSONObject("statistics");
             JSONArray categorias = datos.getJSONArray("categories");
             Boolean respuesta = json.getBoolean("success");

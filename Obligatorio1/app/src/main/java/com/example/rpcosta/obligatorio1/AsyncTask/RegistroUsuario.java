@@ -14,17 +14,18 @@ import java.util.Scanner;
 /**
  * Created by rpcosta on 21/10/14.
  */
-public class RegistroUsuario extends AsyncTask<Jugador, Jugador, String> {
+public class RegistroUsuario extends AsyncTask<Jugador, Jugador, Boolean> {
     String url;
     RegUsuario dto;
-    String result;
+    Boolean result;
+    String id;
 
     public RegistroUsuario(RegUsuario activity) {
         dto = activity;
     }
 
     @Override
-    protected String doInBackground(Jugador... params) {
+    protected Boolean doInBackground(Jugador... params) {
 
         try {
             url = "http://ortapipreguntados.herokuapp.com/users/new/?";
@@ -45,11 +46,13 @@ public class RegistroUsuario extends AsyncTask<Jugador, Jugador, String> {
             wr.flush();
             InputStreamReader in = new InputStreamReader(connection.getInputStream());
             JSONObject json = new JSONObject(getResponseText(in));
+            JSONObject _id = json.getJSONObject("user");
             boolean respuesta = (Boolean) json.getBoolean("success");
             if (respuesta == true) {
-                result = "Registro Correcto";
+                id = _id.getString("_id");
+                result = true;
             } else {
-                result = "No se pudo registrar, intente nuevamente";
+                result = false;
             }
             wr.close();
             connection.disconnect();
@@ -60,9 +63,9 @@ public class RegistroUsuario extends AsyncTask<Jugador, Jugador, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {
+    protected void onPostExecute(Boolean s) {
         super.onPostExecute(s);
-        dto.result(s);
+        dto.result(s,id);
 
 
     }

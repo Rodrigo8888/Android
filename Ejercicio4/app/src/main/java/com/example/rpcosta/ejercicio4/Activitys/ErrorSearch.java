@@ -1,30 +1,25 @@
 package com.example.rpcosta.ejercicio4.Activitys;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebView;
 import com.example.rpcosta.ejercicio4.R;
 
-public class DescripcionItem extends Activity {
-    WebView descripcion;
+public class ErrorSearch extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_descripcion_item);
-        descripcion = (WebView)findViewById(R.id.webView);
-        descripcion.getSettings().setBuiltInZoomControls(true); //Enable Multitouch if supported by ROM
-        Bundle b = getIntent().getExtras();
-        String desc = b.getString("descripcion");
-        descripcion.loadData(desc, "text/html", "UTF-8");
+        setContentView(R.layout.activity_error_search);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.descripcion_item, menu);
+        getMenuInflater().inflate(R.menu.error_search, menu);
         return true;
     }
 
@@ -38,5 +33,13 @@ public class DescripcionItem extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ErrorSearch.this,MyActivity.class);
+        startActivity(i);
+        finish();
+
     }
 }

@@ -15,6 +15,16 @@
             android:layout_alignParentStart="true"
             android:id="@+id/layout7">
 
+        <Button android:layout_width="320dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
+                android:layout_height="35dp"
+                android:text="@string/desafioindividual" android:textSize="15sp"
+                android:background="@drawable/button"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/layout7"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/button"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_marginTop="50dp"
@@ -44,7 +54,7 @@
             android:layout_marginTop="10dp"
             android:textColor="@android:color/white"
             android:layout_height="35dp"
-            android:text="@string/nuevaPartida"
+            android:text="@string/newgame"
             android:textSize="15sp"
             android:background="@drawable/button"
             android:layout_gravity="center_horizontal"

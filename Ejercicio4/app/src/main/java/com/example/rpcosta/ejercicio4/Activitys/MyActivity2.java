@@ -19,6 +19,18 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_activity2);
+        Bundle be = getIntent().getExtras();
+        String id = be.getString("ID");
+        if(id!=null){
+            Item itemS = new Item();
+            itemS.setId(id);
+            f3 = new Fragment3();
+            Bundle b = new Bundle();
+            b.putSerializable("itemS",itemS);
+            f3.setArguments(b);
+            getFragmentManager().beginTransaction().replace(R.id.contenedor, f3).commit();
+
+        }
         if (savedInstanceState == null) {
             Bundle b = getIntent().getExtras();
             String q = b.getString("query");

@@ -5,5 +5,6 @@ package com.example.rpcosta.obligatorio1.Interfaces;
  */
 public interface RegUsuario {
 
-    public void result(String results);
+    public void result(Boolean results, String id);
+
 }

@@ -1,17 +1,28 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class VentanaDesafios extends Activity {
-
+    private Button desafioInd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_desafios);
+        desafioInd = (Button)findViewById(R.id.button);
+        desafioInd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(VentanaDesafios.this,DesafioIndividual.class);
+                startActivity(i);
+            }
+        });
     }
 
 

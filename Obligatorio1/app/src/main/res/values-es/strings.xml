@@ -9,7 +9,10 @@
     <string name="bienvenido">Bienvenido!</string>
     <string name="editprofile">Editar perfil</string>
     <string name="desempeño">Desempeño</string>
-    <string name="newgame">Nuevo Juego</string>
+    <string name="newgame">Nuevo juego</string>
+    <string name="arte">Categoría Arte</string>
+    <string name="vs">VS</string>
+    <string name="desafioindividual">Desafío individual</string>
     <string name="estadisticas">Estadísticas</string>
     <string name="desempeñocategoria">Desempeño por categoría</string>
     <string name="errorLogin">E-mail o Password incorrectos</string>
@@ -31,6 +34,7 @@
     <string name="correo1">Usarás este correo electrónico cuando inicies \n sesión y si alguna vez tienes que cambiar la
         \n contraseña
     </string>
+    <string name="jugar">Jugar</string>
     <string name="olvido">¿Olvidaste tu contraseña?</string>
     <string name="continuar">Continuar</string>
     <string name="registroNombre">¿Cómo es tu nombre?</string>

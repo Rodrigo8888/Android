@@ -31,8 +31,9 @@
     <string name="bienvenido">Welcome!</string>
     <string name="correo">Enter your email address</string>
     <string name="correo1">You will use this email address when you login \n and if you ever have to change the \n
-        password
-    </string>
+        password </string>
+    <string name="vs">VS</string>
+    <string name="desafioindividual">Individual game</string>
     <string name="olvido">Did you forget your password?</string>
     <string name="registroNombre">What´s your name?</string>
     <string name="registroNombre1">If you use your real name \n your friends will recognize you easier</string>
@@ -50,5 +51,8 @@
     <string name="title_activity_olvido_pass">OlvidoPass</string>
     <string name="title_activity_editar_datos">EditarDatos</string>
     <string name="title_activity_change_name_mail">ChangeNameMail</string>
+    <string name="title_activity_desafio_individual">DesafioIndividual</string>
+    <string name="title_activity_arte">Arte</string>
+    <string name="title_activity_preguntas">Preguntas</string>
 
 </resources>

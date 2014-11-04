@@ -8,5 +8,6 @@
     <string name="title_activity_my_activity2">MyActivity2</string>
     <string name="descripcion">Descripción</string>
     <string name="title_activity_descripcion_item">DescripcionItem</string>
+    <string name="title_activity_error_search">ErrorSearch</string>
 
 </resources>

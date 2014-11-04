@@ -1,6 +1,7 @@
 package com.example.rpcosta.ejercicio4.Activitys;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.rpcosta.ejercicio4.DataBase.DBHelper;
 import com.example.rpcosta.ejercicio4.R;
+import com.example.rpcosta.ejercicio4.Services.MyService;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 
@@ -20,7 +22,7 @@ public class MyActivity extends Activity {
     private Button buscar;
     private EditText query;
     private static String Cquery = "query";
-
+    private Boolean isnumeric;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,10 @@ public class MyActivity extends Activity {
         helper.createDB();
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
+        /*Map<String,?> keys = prefs.getAll();
+        for(Map.Entry<String,?> entry : keys.entrySet()){
+                    entry.getValue().toString());
+        }*/
         String busqueda = prefs.getString(Cquery, null);
         query = (EditText) findViewById(R.id.editText1);
         if (busqueda != null) {
@@ -40,9 +46,21 @@ public class MyActivity extends Activity {
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (query.getText().toString().isEmpty()) {
-                    Toast msj = Toast.makeText(MyActivity.this, "El campo no puede estar vacío", Toast.LENGTH_SHORT);
-                    msj.show();
+                isnumeric = true;
+                try {
+                    int num = Integer.parseInt(query.getText().toString());
+                } catch (NumberFormatException e) {
+                    isnumeric = false;
+
+                }
+                if (query.getText().toString().isEmpty() || isnumeric) {
+                    if (isnumeric) {
+                        Toast msj = Toast.makeText(MyActivity.this, "La busqueda no puede ser numérica", Toast.LENGTH_SHORT);
+                        msj.show();
+                    } else {
+                        Toast msj = Toast.makeText(MyActivity.this, "El campo no puede estar vacío", Toast.LENGTH_SHORT);
+                        msj.show();
+                    }
                 } else {
                     String busqueda = query.getText().toString();
                     String input = busqueda.replace(" ", "%20");
@@ -55,6 +73,21 @@ public class MyActivity extends Activity {
                 }
             }
         });
+        if (!isMyServiceRunning()) {
+            Intent intent=new Intent(MyActivity.this,MyService.class);
+            startService(intent);
+        }
+
+    }
+
+    private boolean isMyServiceRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if ("com.example.rpcosta.ejercicio4.Services.MyService".equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -77,5 +110,9 @@ public class MyActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

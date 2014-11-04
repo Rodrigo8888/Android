@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.example.rpcosta.obligatorio1.DesafioIndividual">
+
+    <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/relativeLayout1" android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" android:layout_marginBottom="29dp">
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:rotation="270"
+                android:background="@drawable/ciencia"
+                android:id="@+id/imageView"
+                android:layout_below="@+id/imageView2" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/geo"
+                android:id="@+id/imageView2" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:rotation="45"
+                android:background="@drawable/hist"
+                android:id="@+id/imageView4"
+                android:layout_alignTop="@+id/imageView" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:rotation="135"
+                android:background="@drawable/dep"
+                android:id="@+id/imageView5" android:layout_below="@+id/imageView4"
+                android:layout_alignLeft="@+id/imageView4" android:layout_alignStart="@+id/imageView4"
+                android:layout_marginTop="57dp"/>
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:rotation="180"
+                android:background="@drawable/arte"
+                android:id="@+id/imageView6" android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:rotation="225"
+                android:background="@drawable/entretenimiento"
+                android:id="@+id/imageView8" android:layout_alignTop="@+id/imageView5"
+                android:layout_alignRight="@+id/imageView" android:layout_alignEnd="@+id/imageView"/>
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/start"
+                android:id="@+id/imageView9" android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp" android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true" android:id="@+id/linearLayout">
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="50dp"
+                android:background="@drawable/perfilfoto"
+                android:id="@+id/imageView10"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="30dp"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:layout_height="wrap_content"
+                android:text="@string/vs"
+                android:id="@+id/textView"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_launcher"
+                android:id="@+id/imageView11"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp" android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+    </LinearLayout>
+</RelativeLayout>

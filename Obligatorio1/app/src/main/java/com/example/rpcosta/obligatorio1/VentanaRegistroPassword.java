@@ -49,9 +49,7 @@ public class VentanaRegistroPassword extends Activity implements RegUsuario {
                     j.setNombre(nombre);
                     j.setPassword(contraseña);
                     new RegistroUsuario(VentanaRegistroPassword.this).execute(j);
-                    Intent i = new Intent(VentanaRegistroPassword.this, MyActivity.class);
-                    startActivity(i);
-                    finish();
+
                 }
             }
         });
@@ -81,9 +79,20 @@ public class VentanaRegistroPassword extends Activity implements RegUsuario {
     }
 
     @Override
-    public void result(String results) {
-        error = results;
-        mensaje = Toast.makeText(VentanaRegistroPassword.this, error, Toast.LENGTH_SHORT);
-        mensaje.show();
+    public void result(Boolean results, String id) {
+        if(results) {
+            Intent i = new Intent(VentanaRegistroPassword.this, MiPerfil.class);
+            i.putExtra("name", nombre);
+            i.putExtra("id", id);
+            i.putExtra("mail", mail);
+            startActivity(i);
+            finish();
+        }
+        else {
+            error = getResources().getString(R.string.errorLogin);
+            mensaje = Toast.makeText(VentanaRegistroPassword.this, error, Toast.LENGTH_SHORT);
+            mensaje.show();
+        }
+
     }
 }
