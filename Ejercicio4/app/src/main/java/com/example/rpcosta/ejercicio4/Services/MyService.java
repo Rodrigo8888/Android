@@ -41,7 +41,7 @@ public class MyService extends IntentService {
     private Runnable updateData = new Runnable() {
         public void run() {
             checkear();
-            handler.postDelayed(updateData, 1000*5);
+            handler.postDelayed(updateData, 1000 * 20);
         }
     };
 
@@ -59,18 +59,20 @@ public class MyService extends IntentService {
         }
         //Avisar si el item finaliza el día de hoy
         Calendar c = Calendar.getInstance();
-        for(int i=0;i<lista.size();i++){
-            if (c.getTime() == lista.get(i).getStop_time()) {
+        for (int i = 20; i < lista.size(); i++) {
+            int horaItem = lista.get(i).getStop_time().getHours();
+            int diaitem = lista.get(i).getStop_time().getDay();
+            if (diaitem == c.getTime().getDay()) {
                 //avisar que estamos en el dia en que finaliza el item
                 int hour = c.get(Calendar.HOUR);
                 int itemHour = lista.get(i).getStop_time().getHours();
-                if (hour == itemHour - 1) {
+                //if (hour == itemHour + 1) {
                     //Creo notificación
                     Intent inte = new Intent(MyService.this, MyActivity2.class);
                     inte.putExtra("ID", lista.get(i).getId());
                     PendingIntent pIntent = PendingIntent.getActivity(this, 0, inte, 0);
                     Notification n = new Notification.Builder(this)
-                            .setContentTitle("Su favorito:  " + lista.get(i).getTitle() + " finaliza en 1hs, no lo dejes pasar!")
+                            .setContentTitle("Su favorito finaliza en 1hs, no lo dejes pasar!")
                             .setSmallIcon(R.drawable.notificacion)
                             .setContentIntent(pIntent)
                             .setAutoCancel(true).build();
@@ -80,19 +82,22 @@ public class MyService extends IntentService {
                     notificationManager.notify(0, n);
                     n.defaults |= Notification.DEFAULT_LIGHTS;
 
+                System.out.print("Error en el Intent");
+
 
                 }
             }
-        }
+
+        //}
     }
 
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        while(true){
+        while (true) {
             checkear();
             try {
-                Thread.sleep(1000 * 5);
+                Thread.sleep(1000 * 20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

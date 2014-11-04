@@ -18,7 +18,6 @@ import java.util.ArrayList;
  */
 public class Busqueda extends AsyncTask<String, String, ArrayList<Item>> {
     private Datos dto;
-    private ArrayList<Item> listaItems;
     private APIResults resultados;
 
     public Busqueda(Datos activity) {

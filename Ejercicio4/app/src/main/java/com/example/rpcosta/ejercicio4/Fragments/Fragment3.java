@@ -43,6 +43,7 @@ public class Fragment3 extends Fragment implements DatosItems {
     private Boolean transparence = false;
     private ArrayList<Item> favUser;
     private Button descripcion;
+    private Item item;
     Dao dao;
 
     @Override
@@ -58,61 +59,65 @@ public class Fragment3 extends Fragment implements DatosItems {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         Bundle b = getArguments();
-        final Item itemS = (Item)b.getSerializable("ItemS");
+        final Item itemS = (Item) b.getSerializable("ItemS");
+        item = (Item) b.getSerializable("item");
         final DBHelper helper = OpenHelperManager.getHelper(getActivity(), DBHelper.class);
         rootView = inflater.inflate(R.layout.fragment3, container, false);
-        descripcion = (Button)rootView.findViewById(R.id.button2);
-        final Item item = (Item) b.getSerializable("item");
+        descripcion = (Button) rootView.findViewById(R.id.button2);
         fav = (ImageView) rootView.findViewById(R.id.imageView3);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
-        try {
-            dao = helper.getItemDao();
-            favUser=(ArrayList<Item>)dao.queryForAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(favUser!=null) {
-            for (int i = 0; (i < favUser.size()) && (!transparence); i++) {
-                if (favUser.get(i).getId().equalsIgnoreCase(item.getId())) {
-                    transparence = true;
+        if (itemS == null) {
+            try {
+                dao = helper.getItemDao();
+                favUser = (ArrayList<Item>) dao.queryForAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if (favUser != null) {
+                for (int i = 0; (i < favUser.size()) && (!transparence); i++) {
+                    if (favUser.get(i).getId().equalsIgnoreCase(item.getId())) {
+                        transparence = true;
+                    }
                 }
             }
+            if (transparence) {
+                fav.getBackground().setAlpha(255);
+            } else {
+                fav.getBackground().setAlpha(50);
+            }
+
+            manejador = ManejadorImagenes.getInstance();
+            url = "https://api.mercadolibre.com/items/";
+            url += item.getId();
+            new ItemDescription(this).execute(url);
+        } else {
+            item = itemS;
+            manejador = ManejadorImagenes.getInstance();
+            url = "https://api.mercadolibre.com/items/";
+            url += item.getId();
+            new ItemDescription(this).execute(url);
         }
-        if(transparence){
-            fav.getBackground().setAlpha(255);
-        }
-        else{
-            fav.getBackground().setAlpha(50);
-        }
-        if(itemS!=null){
-            item.setId(itemS.getId());
-        }
-        manejador = ManejadorImagenes.getInstance();
-        url = "https://api.mercadolibre.com/items/";
-        url += item.getId();
-        new ItemDescription(this).execute(url);
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 try {
-                        if (!transparence) {
-                            fav.getBackground().setAlpha(255);
-                            dao.create(item);
-                            Toast msj = Toast.makeText(getActivity(),"El ítem fue agregado a Favoritos",Toast.LENGTH_SHORT);
-                            msj.show();
-                            transparence = true;
-                        }
-                        else{
-                            DeleteBuilder<Item, Integer> deleteBuilder = dao.deleteBuilder();
-                            deleteBuilder.where().eq("id", item.getId());
-                            deleteBuilder.delete();
-                            fav.getBackground().setAlpha(50);
-                            Toast msj = Toast.makeText(getActivity(),"El ítem fue eliminado de Favoritos",Toast.LENGTH_SHORT);
-                            msj.show();
-                            transparence = false;
+                    if (!transparence) {
+                        fav.getBackground().setAlpha(255);
+                        dao.create(item);
+                        Toast msj = Toast.makeText(getActivity(), "El ítem fue agregado a Favoritos", Toast.LENGTH_SHORT);
+                        msj.show();
+                        transparence = true;
+                    } else {
+                        DeleteBuilder<Item, Integer> deleteBuilder = dao.deleteBuilder();
+                        deleteBuilder.where().eq("id", item.getId());
+                        deleteBuilder.delete();
+                        fav.getBackground().setAlpha(50);
+                        Toast msj = Toast.makeText(getActivity(), "El ítem fue eliminado de Favoritos", Toast.LENGTH_SHORT);
+                        msj.show();
+                        transparence = false;
 
-                        }
+                    }
                 } catch (SQLException e) {
                     Log.e("Error", "Error guardando favorito");
                 }
@@ -122,8 +127,8 @@ public class Fragment3 extends Fragment implements DatosItems {
             @Override
             public void onClick(View view) {
                 String urlDes = "https://api.mercadolibre.com/items/";
-                urlDes+=item.getId()+"/description";
-                 new Descripcion(Fragment3.this).execute(urlDes);
+                urlDes += item.getId() + "/description";
+                new Descripcion(Fragment3.this).execute(urlDes);
             }
         });
         return rootView;
@@ -156,9 +161,11 @@ public class Fragment3 extends Fragment implements DatosItems {
 
     @Override
     public void refreshDescripcion(String desc) {
-        Intent i = new Intent(getActivity(), DescripcionItem.class);
-        i.putExtra("descripcion",desc);
-        startActivity(i);
+        if(desc !=null) {
+            Intent i = new Intent(getActivity(), DescripcionItem.class);
+            i.putExtra("descripcion", desc);
+            startActivity(i);
+        }
     }
 
 

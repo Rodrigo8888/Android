@@ -26,21 +26,22 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
             itemS.setId(id);
             f3 = new Fragment3();
             Bundle b = new Bundle();
-            b.putSerializable("itemS",itemS);
-            f3.setArguments(b);
+            b.putSerializable("ItemS",itemS);
             getFragmentManager().beginTransaction().replace(R.id.contenedor, f3).commit();
+            f3.setArguments(b);
 
         }
-        if (savedInstanceState == null) {
-            Bundle b = getIntent().getExtras();
-            String q = b.getString("query");
-            b.putString("query", q);
-            f2 = new Fragment2();
-            f2.setArguments(b);
-            getFragmentManager().beginTransaction().replace(R.id.contenedor, f2).commit();
-        }
-        else{
-            frag = 3;
+        else {
+            if (savedInstanceState == null) {
+                Bundle b = getIntent().getExtras();
+                String q = b.getString("query");
+                b.putString("query", q);
+                f2 = new Fragment2();
+                f2.setArguments(b);
+                getFragmentManager().beginTransaction().replace(R.id.contenedor, f2).commit();
+            } else {
+                frag = 3;
+            }
         }
 
     }
