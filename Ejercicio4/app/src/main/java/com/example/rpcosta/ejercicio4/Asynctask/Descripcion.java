@@ -39,8 +39,8 @@ public class Descripcion  extends AsyncTask<String, String, String>{
             URLConnection conection = url.openConnection();
             InputStream in = new BufferedInputStream(conection.getInputStream());
             JSONObject json = new JSONObject(getResponseText(in));
+            Log.v("respuesta",json.toString());
             descripcion = json.getString("text");
-
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }

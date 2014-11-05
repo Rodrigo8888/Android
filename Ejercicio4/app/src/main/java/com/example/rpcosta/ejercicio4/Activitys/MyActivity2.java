@@ -19,19 +19,19 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_activity2);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle be = getIntent().getExtras();
         String id = be.getString("ID");
-        if(id!=null){
+        if (id != null) {
             Item itemS = new Item();
             itemS.setId(id);
             f3 = new Fragment3();
             Bundle b = new Bundle();
-            b.putSerializable("ItemS",itemS);
+            b.putSerializable("ItemS", itemS);
             f3.setArguments(b);
             getFragmentManager().beginTransaction().replace(R.id.contenedor, f3).commit();
 
-        }
-        else {
+        } else {
             if (savedInstanceState == null) {
                 Bundle b = getIntent().getExtras();
                 String q = b.getString("query");
@@ -61,8 +61,22 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == android.R.id.home) {
+            if(frag == 3) {
+                if (f2 == null) {
+                    f2 = new Fragment2();
+                }
+                Bundle b = getIntent().getExtras();
+                String q = b.getString("query");
+                b.putString("query", q);
+                f2.setArguments(b);
+                getFragmentManager().beginTransaction().replace(R.id.contenedor, f2).commit();
+                frag = 2;
+            }
+            else{
+                finish();
+            }
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -73,7 +87,7 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
         f3 = new Fragment3();
         getFragmentManager().beginTransaction().replace(R.id.contenedor, f3).commit();
         Bundle b = new Bundle();
-        b.putSerializable("item",item);
+        b.putSerializable("item", item);
         f3.setArguments(b);
 
 
@@ -90,9 +104,8 @@ public class MyActivity2 extends Activity implements InterfaceFragment1 {
             b.putString("query", q);
             f2.setArguments(b);
             getFragmentManager().beginTransaction().replace(R.id.contenedor, f2).commit();
-            frag=2;
-        }
-        else{
+            frag = 2;
+        } else {
             finish();
         }
     }

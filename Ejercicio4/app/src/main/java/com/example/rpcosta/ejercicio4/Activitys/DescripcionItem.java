@@ -13,6 +13,7 @@ public class DescripcionItem extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion_item);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         descripcion = (WebView)findViewById(R.id.webView);
         descripcion.getSettings().setBuiltInZoomControls(true); //Enable Multitouch if supported by ROM
         Bundle b = getIntent().getExtras();
@@ -34,9 +35,9 @@ public class DescripcionItem extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        if (id == android.R.id.home) {
+               finish();cd Des
+            }
         return super.onOptionsItemSelected(item);
     }
 }

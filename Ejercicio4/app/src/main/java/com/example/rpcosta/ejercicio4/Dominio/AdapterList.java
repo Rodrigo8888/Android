@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.rpcosta.ejercicio4.Asynctask.ManejadorImagenes;
 import com.example.rpcosta.ejercicio4.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class AdapterList extends ArrayAdapter<Item> {
     Context actividad;
     private ArrayList<Item> lista;
     private LayoutInflater inflater;
-    private ManejadorImagenes manejador;
+    //private ManejadorImagenes manejador;
 
 
     public AdapterList(Context context, int resc, ArrayList<Item> objects) {
@@ -30,7 +30,7 @@ public class AdapterList extends ArrayAdapter<Item> {
         lista = objects;
         actividad = context;
         inflater = LayoutInflater.from(context);
-        manejador = ManejadorImagenes.getInstance();
+        //manejador = ManejadorImagenes.getInstance();
 
     }
 
@@ -43,7 +43,8 @@ public class AdapterList extends ArrayAdapter<Item> {
             holder.title = (TextView) convertView.findViewById(R.id.textView2);
             holder.price = (TextView) convertView.findViewById(R.id.textView4);
             holder.image = (ImageView) convertView.findViewById(R.id.imageView);
-            manejador.setImagenes(item.getThumbnail(), holder.image);
+            Picasso.with(actividad).load(item.getThumbnail()).into(holder.image);
+            //manejador.setImagenes(item.getThumbnail(), holder.image);
             convertView.setTag(holder);
             if (actividad.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 holder.subTitle = (TextView) convertView.findViewById(R.id.textView3);
@@ -51,7 +52,8 @@ public class AdapterList extends ArrayAdapter<Item> {
             }
         } else {
             holder = (ViewHolder) convertView.getTag();
-            manejador.setImagenes(item.getThumbnail(), holder.image);
+            Picasso.with(actividad).load(item.getThumbnail()).into(holder.image);
+            //manejador.setImagenes(item.getThumbnail(), holder.image);
 
         }
         holder.title.setText(item.getTitle());

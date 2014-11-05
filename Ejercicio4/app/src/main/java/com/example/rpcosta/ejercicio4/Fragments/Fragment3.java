@@ -24,6 +24,7 @@ import com.example.rpcosta.ejercicio4.R;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.squareup.picasso.Picasso;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -153,9 +154,11 @@ public class Fragment3 extends Fragment implements DatosItems {
         cantidad.setText("Cantidad: " + i.getAvailable_quantity());
         //Verificar antes si la lista es o no vacia
         if (i.getLista() != null) {
-            manejador.setImagenes(i.getLista().get(0).getUrl(), imagen);
+            //manejador.setImagenes(i.getLista().get(0).getUrl(), imagen);
+            Picasso.with(getActivity()).load(i.getLista().get(0).getUrl()).into(imagen);
         } else {
-            manejador.setImagenes(i.getThumbnail(), imagen);
+            //manejador.setImagenes(i.getThumbnail(), imagen);
+            Picasso.with(getActivity()).load(i.getThumbnail()).into(imagen);
         }
     }
 
@@ -166,6 +169,7 @@ public class Fragment3 extends Fragment implements DatosItems {
             i.putExtra("descripcion", desc);
             startActivity(i);
         }
+
     }
 
 
