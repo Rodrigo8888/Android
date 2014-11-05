@@ -18,7 +18,6 @@ public class ItemDescription extends AsyncTask<String, String, Item> {
     private DatosItems dto;
     private Item it;
 
-
     public ItemDescription(DatosItems activity) {
         this.dto = activity;
     }
@@ -28,6 +27,7 @@ public class ItemDescription extends AsyncTask<String, String, Item> {
         super.onPostExecute(item);
         dto.refreshdatos(item);
     }
+
 
     @Override
     protected Item doInBackground(String... params) {

@@ -36,7 +36,7 @@ public class DescripcionItem extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == android.R.id.home) {
-               finish();cd Des
+               finish();
             }
         return super.onOptionsItemSelected(item);
     }

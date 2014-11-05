@@ -5,23 +5,20 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/cerebrotes"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+            android:label="@android:string/nombreApp">
         <activity
             android:name=".MyActivity"
-            android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".VentanaRegistroNombre"
-            android:label="@string/title_activity_ventana_registro" >
+            android:name=".VentanaRegistroNombre" >
         </activity>
         <activity
-            android:name=".VentanaRegistroMail"
-            android:label="@string/title_activity_ventana_registro_mail" >
+            android:name=".VentanaRegistroMail" >
         </activity>
         <activity
-            android:name=".VentanaRegistroPassword"
-            android:label="@string/title_activity_ventana_registro_password" >
+            android:name=".VentanaRegistroPassword" >
         </activity>
 
         <meta-data
@@ -38,36 +35,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VentanaDesafios"
-            android:label="@string/title_activity_ventana_desafios" >
+            android:name=".VentanaDesafios" >
         </activity>
         <activity
-            android:name=".MiPerfil"
-            android:label="@string/title_activity_mi_perfil" >
+            android:name=".MiPerfil" >
         </activity>
         <activity
-            android:name=".OlvidoPass"
-            android:label="@string/title_activity_olvido_pass" >
+            android:name=".OlvidoPass" >
         </activity>
         <activity
-            android:name=".EditarDatos"
-            android:label="@string/title_activity_editar_datos" >
+            android:name=".EditarDatos" >
         </activity>
         <activity
-            android:name=".ChangeNameMail"
-            android:label="@string/title_activity_change_name_mail" >
+            android:name=".ChangeNameMail" >
         </activity>
         <activity
-            android:name=".DesafioIndividual"
-            android:label="@string/title_activity_desafio_individual" >
+            android:name=".DesafioIndividual" >
         </activity>
         <activity
-            android:name=".Arte"
-            android:label="@string/title_activity_arte" >
+            android:name=".Arte" >
         </activity>
         <activity
-            android:name=".Preguntas"
-            android:label="@string/title_activity_preguntas" >
+            android:name=".Preguntas" >
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

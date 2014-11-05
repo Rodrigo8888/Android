@@ -45,6 +45,8 @@ public class MyService extends IntentService {
         }
     };
 
+
+
     private void checkear() {
         helper = OpenHelperManager.getHelper(MyService.this, DBHelper.class);
         try {
@@ -59,18 +61,16 @@ public class MyService extends IntentService {
         }
         //Avisar si el item finaliza el día de hoy
         Calendar c = Calendar.getInstance();
+        Calendar h = Calendar.getInstance();
+        c.add(Calendar.HOUR, -1);
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getStop_time() != null) {
-                int horaItem = lista.get(i).getStop_time().getHours();
-                int diaitem = lista.get(i).getStop_time().getDay();
-                if (diaitem == c.getTime().getDay()) {
+            if ((lista.get(i).getStop_time() != null) &&(lista.get(i).getNotif()!=null)) {
+                if (lista.get(i).getStop_time().before(h.getTime())&&(lista.get(i).getStop_time().after(c.getTime())&&(!lista.get(i).getNotif()))) {
                     //avisar que estamos en el dia en que finaliza el item
-                    int hour = c.get(Calendar.HOUR);
-                    if (hour == horaItem + 1) {
                     //Creo notificación
                     Intent inte = new Intent(MyService.this, MyActivity2.class);
                     inte.putExtra("ID", lista.get(i).getId());
-                    PendingIntent pIntent = PendingIntent.getActivity(this, lista.get(i).getId().hashCode(), inte,PendingIntent.FLAG_ONE_SHOT);
+                    PendingIntent pIntent = PendingIntent.getActivity(this, lista.get(i).getId().hashCode(), inte, PendingIntent.FLAG_ONE_SHOT);
                     Notification n = new Notification.Builder(this)
                             .setContentTitle("Su favorito finaliza en 1hs, no lo dejes pasar!")
                             .setSmallIcon(R.drawable.notificacion)
@@ -78,16 +78,16 @@ public class MyService extends IntentService {
                             .setAutoCancel(true).build();
                     NotificationManager notificationManager =
                             (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
                     notificationManager.notify(lista.get(i).getId().hashCode(), n);
                     n.defaults |= Notification.DEFAULT_LIGHTS;
+                    lista.get(i).setNotif(true);
 
 
                 }
             }
 
-            }
         }
+
     }
 
 

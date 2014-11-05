@@ -79,6 +79,11 @@ public class VentanaRegistroPassword extends Activity implements RegUsuario {
     }
 
     @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @Override
     public void result(Boolean results, String id) {
         if(results) {
             Intent i = new Intent(VentanaRegistroPassword.this, MiPerfil.class);

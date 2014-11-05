@@ -29,6 +29,8 @@ public class Item implements Serializable {
 
     private String thumbnail;
 
+    private Boolean notif;
+
     private float price;
 
     @DatabaseField(columnName = DATA_END)
@@ -49,6 +51,14 @@ public class Item implements Serializable {
 
     public Date getStop_time() {
         return stop_time;
+    }
+
+    public Boolean getNotif() {
+        return notif;
+    }
+
+    public void setNotif(Boolean notif) {
+        this.notif = notif;
     }
 
     public void setStop_time(Date stop_time) {
@@ -130,6 +140,7 @@ public class Item implements Serializable {
     public Item(String titulo, float precio, String subtitulo, int cantidad, String image, String ident, ArrayList<Pictures> lista, Date fecha) {
         this.title = titulo;
         this.price = precio;
+        this.notif = false;
         this.subtitle = subtitulo;
         this.available_quantity = cantidad;
         this.thumbnail = image;

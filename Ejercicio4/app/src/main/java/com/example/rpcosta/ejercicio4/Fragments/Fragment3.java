@@ -143,6 +143,7 @@ public class Fragment3 extends Fragment implements DatosItems {
         precio = (TextView) rootView.findViewById(R.id.textView7);
         cantidad = (TextView) rootView.findViewById(R.id.textView8);
         imagen = (ImageView) rootView.findViewById(R.id.imageView);
+        rootView.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
         i = item;
         titulo.setText(i.getTitle());
         if (i.getSubtitle() == null) {

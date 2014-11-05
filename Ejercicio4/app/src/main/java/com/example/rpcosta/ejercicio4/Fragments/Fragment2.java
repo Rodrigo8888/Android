@@ -2,6 +2,7 @@ package com.example.rpcosta.ejercicio4.Fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class Fragment2 extends Fragment implements Datos {
     private String paginas = "&limit=15";
     private static String listQuery = "Lista";
     private String url;
-    //ProgressDialog dialogo = null;
+    ProgressDialog dialogo = null;
 
 
     @Override
@@ -53,7 +54,7 @@ public class Fragment2 extends Fragment implements Datos {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         Bundle b = getArguments();
         String querys = b.getString("query");
-        query=querys;
+        query = querys;
         View rootView = inflater.inflate(R.layout.fragment2, container, false);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
         offset = 0;
@@ -61,6 +62,9 @@ public class Fragment2 extends Fragment implements Datos {
         lista = new ArrayList<Item>();
         miLista = (ListView) rootView.findViewById(R.id.listView1);
         if (savedInstanceState != null) {
+            if(dialogo!=null) {
+                dialogo.dismiss();
+            }
             EditText texto = (EditText) rootView.findViewById(R.id.editText1);
             miLista = (ListView) rootView.findViewById(R.id.listView1);
             lista = (ArrayList<Item>) savedInstanceState.getSerializable(listQuery);
@@ -76,9 +80,8 @@ public class Fragment2 extends Fragment implements Datos {
             miLista = (ListView) rootView.findViewById(R.id.listView1);
             if (miLista.getAdapter() == null) {
                 miLista.setAdapter(adapter);
-                //dialogo = ProgressDialog.show(getActivity(), "", "Buscando...", true);
             }
-
+            dialogo = ProgressDialog.show(getActivity(), "", "Buscando...", true);
             new Busqueda(Fragment2.this).execute(url);
         }
         miLista.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -90,7 +93,7 @@ public class Fragment2 extends Fragment implements Datos {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if (firstVisibleItem + visibleItemCount >= offset + max) {
-                    //dialogo = ProgressDialog.show(getActivity(), "", "Buscando...", true);
+                    dialogo = ProgressDialog.show(getActivity(), "", "Buscando...", true);
                     url = "https://api.mercadolibre.com/sites/MLU/search?q=";
                     offset += max;
                     if (miLista.getAdapter() == null) {
@@ -105,7 +108,7 @@ public class Fragment2 extends Fragment implements Datos {
         miLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                context.AvisoClick(lista.get(position),3);
+                context.AvisoClick(lista.get(position), 3);
             }
         });
 
@@ -121,7 +124,7 @@ public class Fragment2 extends Fragment implements Datos {
 
     @Override
     public void refreshList(ArrayList<Item> items) {
-        //dialogo.dismiss();
+        dialogo.dismiss();
         if (lista != null) {
             lista.addAll(items);
         } else {
@@ -130,7 +133,7 @@ public class Fragment2 extends Fragment implements Datos {
         if (miLista.getAdapter() == null) {
             miLista.setAdapter(adapter);
         }
-        if(lista.size()==0){
+        if (lista.size() == 0) {
             Intent i = new Intent(getActivity(), ErrorSearch.class);
             startActivity(i);
         }

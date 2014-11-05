@@ -19,7 +19,6 @@ import java.sql.SQLException;
 public class DBHelper extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "items_trackeados.db";
     private static final int DATABASE_VERSION = 1;
-    private Item i;
     private Dao<Item, Integer> itemDao;
 
 
