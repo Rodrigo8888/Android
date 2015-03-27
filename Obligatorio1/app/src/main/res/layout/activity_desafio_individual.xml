@@ -75,7 +75,7 @@
                 android:id="@+id/imageView10"/>
         <TextView
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="100dp"
                 android:layout_marginTop="30dp"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
@@ -85,7 +85,7 @@
         <ImageView
                 android:layout_width="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="100dp"
                 android:layout_height="50dp"
                 android:background="@drawable/ic_launcher"
                 android:id="@+id/imageView11"/>

@@ -1,17 +1,18 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.rpcosta.obligatorio1.AsyncTask.ValidacionLogin;
-import com.example.rpcosta.obligatorio1.Interfaces.ValUsuario;
+import AsyncTask.ValidacionLogin;
+import Interfaces.ValUsuario;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class MyActivity extends Activity implements ValUsuario {
     private EditText usuario, contraseña;
     private Button ingresar, registro;
     private Toast mensaje;
+    private Dialog dialog;
 
     //Variables
     String mail;
@@ -34,8 +36,44 @@ public class MyActivity extends Activity implements ValUsuario {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        dialog = null;
         usuario = (EditText) findViewById(R.id.editText);
         contraseña = (EditText) findViewById(R.id.editText2);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        imm.hideSoftInputFromWindow(usuario.getWindowToken(), 0);
+        usuario.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN
+                        && keyEvent.getKeyCode() ==       KeyEvent.KEYCODE_ENTER) {
+
+                    return false;
+                }
+                else if(keyEvent.getAction() == KeyEvent.ACTION_DOWN
+                        && keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK){
+
+                }
+                return false;
+            }
+        });
+        InputMethodManager nnm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        nnm.hideSoftInputFromWindow(contraseña.getWindowToken(), 0);
+        contraseña.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN
+                        && keyEvent.getKeyCode() ==       KeyEvent.KEYCODE_ENTER) {
+
+                    return false;
+                }
+                else if(keyEvent.getAction() == KeyEvent.ACTION_DOWN
+                        && keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK){
+
+                }
+                return false;
+            }
+        });
         registro = (Button) findViewById(R.id.button3);
         ingresar = (Button) findViewById(R.id.button);
         ingresar.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +90,7 @@ public class MyActivity extends Activity implements ValUsuario {
                     mensaje = Toast.makeText(MyActivity.this, mensajeError, Toast.LENGTH_SHORT);
                     mensaje.show();
                 } else {
+                    dialog = ProgressDialog.show(MyActivity.this, "", "Iniciando...", true);
                     lista.add(mail);
                     lista.add(pass);
                     new ValidacionLogin(MyActivity.this).execute(lista);
@@ -95,6 +134,7 @@ public class MyActivity extends Activity implements ValUsuario {
 
     @Override
     public void validacion(Boolean correcto, String ide, String name, String mail) {
+        dialog.dismiss();
         if (correcto) {
             id = ide;
             Intent i = new Intent(MyActivity.this, MiPerfil.class);
@@ -108,6 +148,11 @@ public class MyActivity extends Activity implements ValUsuario {
             mensaje = Toast.makeText(MyActivity.this, mensajeError, Toast.LENGTH_SHORT);
             mensaje.show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
 

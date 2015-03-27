@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by rpcosta on 24/10/14.
@@ -43,6 +44,7 @@ public class Fragment3 extends Fragment implements DatosItems {
     private InterfaceFragment1 miCtx;
     private Boolean transparence = false;
     private ArrayList<Item> favUser;
+    private List<Item>  favoritos;
     private Button descripcion;
     private Item item;
     Dao dao;
@@ -51,7 +53,7 @@ public class Fragment3 extends Fragment implements DatosItems {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            miCtx = (InterfaceFragment1) activity;
+            miCtx = (InterfaceFragment1) activity;                                                                           /**/
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + " must implement InterfaceFragment1");
         }
@@ -172,6 +174,8 @@ public class Fragment3 extends Fragment implements DatosItems {
         }
 
     }
+
+
 
 
 }

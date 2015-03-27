@@ -14,11 +14,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 import com.example.rpcosta.ejercicio4.Activitys.ErrorSearch;
 import com.example.rpcosta.ejercicio4.Asynctask.Busqueda;
-import com.example.rpcosta.ejercicio4.Dominio.AdapterList;
-import com.example.rpcosta.ejercicio4.Dominio.Item;
+import com.example.rpcosta.ejercicio4.Dominio.*;
 import com.example.rpcosta.ejercicio4.Interfaces.Datos;
 import com.example.rpcosta.ejercicio4.Interfaces.InterfaceFragment1;
+import com.example.rpcosta.ejercicio4.Interfaces.RestApi;
 import com.example.rpcosta.ejercicio4.R;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 import java.util.ArrayList;
 
@@ -26,10 +30,12 @@ import java.util.ArrayList;
  * Created by rpcosta on 24/10/14.
  */
 public class Fragment2 extends Fragment implements Datos {
+
     private InterfaceFragment1 context;
     private AdapterList adapter;
     private ArrayList<Item> lista;
     private ListView miLista;
+    private ArrayList<Item>  favoritos;
     private String query;
     private int offset;
     private static final int max = 15;
@@ -37,6 +43,11 @@ public class Fragment2 extends Fragment implements Datos {
     private static String listQuery = "Lista";
     private String url;
     ProgressDialog dialogo = null;
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>RETROFIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    public static final String END_POINT= "https://api.mercadolibre.com";
+
 
 
     @Override
@@ -113,6 +124,10 @@ public class Fragment2 extends Fragment implements Datos {
         });
 
 
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RETROFIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        callApi();
         return rootView;
     }
 
@@ -126,8 +141,10 @@ public class Fragment2 extends Fragment implements Datos {
     public void refreshList(ArrayList<Item> items) {
         dialogo.dismiss();
         if (lista != null) {
+            //lista.addAll(items);
             lista.addAll(items);
         } else {
+            //lista = items;
             lista = items;
         }
         if (miLista.getAdapter() == null) {
@@ -140,5 +157,55 @@ public class Fragment2 extends Fragment implements Datos {
         adapter.notifyDataSetChanged();
     }
 
+
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RETROFIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    private static  RestAdapter restAdapter;
+
+    private static  RestAdapter getRestAdapter(){
+        if(restAdapter==null){
+            restAdapter = new RestAdapter.Builder()
+                    .setEndpoint(END_POINT)
+                    .setConverter(new JacksonConverter(MLObjectMapper.getInstance()))
+                    .build();
+        }
+        return restAdapter;
+    }
+
+    public static RestApi getApiInterface(){
+
+        // Create an instance of our  API interface.
+        RestApi weatherAPI =null;
+        try {
+            if(restAdapter==null){
+                restAdapter=getRestAdapter();
+            }
+            weatherAPI = restAdapter.create(RestApi.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return weatherAPI;
+
+
+}
+    public void callApi() {
+
+        RestApi weatherAPI = getApiInterface();
+        weatherAPI.getItems(query, new Callback<APIResults>() {
+            @Override
+            public void success(APIResults apiResults, Response response) {
+                    String a = "";
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                String a = "";
+
+            }
+        });
+
+    }
 
 }

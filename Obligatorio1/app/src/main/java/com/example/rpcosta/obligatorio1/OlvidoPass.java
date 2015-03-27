@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.rpcosta.obligatorio1.AsyncTask.CambioPass;
-import com.example.rpcosta.obligatorio1.Interfaces.ChangePass;
+import AsyncTask.CambioPass;
+import Interfaces.ChangePass;
 
 import java.util.ArrayList;
 
@@ -27,6 +27,7 @@ public class OlvidoPass extends Activity implements ChangePass {
         setContentView(R.layout.activity_olvido_pass);
         enviar = (Button) findViewById(R.id.button);
         newPass = (EditText) findViewById(R.id.editText);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle b = getIntent().getExtras();
         final String id = b.getString("id");
         enviar.setOnClickListener(new View.OnClickListener() {
@@ -62,8 +63,8 @@ public class OlvidoPass extends Activity implements ChangePass {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == android.R.id.home) {
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

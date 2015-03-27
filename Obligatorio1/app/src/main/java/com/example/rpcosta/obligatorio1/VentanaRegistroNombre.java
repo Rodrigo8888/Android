@@ -56,6 +56,8 @@ public class VentanaRegistroNombre extends Activity {
 
     @Override
     public void onBackPressed() {
+        Intent i = new Intent(VentanaRegistroNombre.this, MyActivity.class);
+        startActivity(i);
         finish();
     }
 
@@ -64,13 +66,11 @@ public class VentanaRegistroNombre extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+                finish();
+            }
+            return super.onOptionsItemSelected(item);
         }
-    }
+
 }

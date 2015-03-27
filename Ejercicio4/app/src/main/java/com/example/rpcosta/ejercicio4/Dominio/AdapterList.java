@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.rpcosta.ejercicio4.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -20,12 +20,12 @@ import java.util.ArrayList;
 public class AdapterList extends ArrayAdapter<Item> {
 
     Context actividad;
-    private ArrayList<Item> lista;
+    private List<Item> lista;
     private LayoutInflater inflater;
     //private ManejadorImagenes manejador;
 
 
-    public AdapterList(Context context, int resc, ArrayList<Item> objects) {
+    public AdapterList(Context context, int resc, List<Item> objects) {
         super(context, resc, objects);
         lista = objects;
         actividad = context;

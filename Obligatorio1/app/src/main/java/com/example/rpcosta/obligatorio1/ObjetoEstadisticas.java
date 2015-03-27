@@ -8,10 +8,18 @@ public class ObjetoEstadisticas {
     private int preguntasCorrectas;
     private int preguntasIncorrectas;
     private int totalPreguntas;
-    private String nombreCategoria;
+    private String nombreCategoria,Id;
 
     public String getNombreCategoria() {
         return nombreCategoria;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 
     public void setNombreCategoria(String nombreCategoria) {

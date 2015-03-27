@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.rpcosta.obligatorio1.AsyncTask.CambiarNombreMail;
-import com.example.rpcosta.obligatorio1.Interfaces.CambiarNomMail;
+import AsyncTask.CambiarNombreMail;
+import Interfaces.CambiarNomMail;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,7 @@ public class ChangeNameMail extends Activity implements CambiarNomMail {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_name_mail);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         name = (EditText) findViewById(R.id.editText);
         mail = (EditText) findViewById(R.id.editText2);
         continuar = (Button) findViewById(R.id.button);
@@ -64,8 +65,8 @@ public class ChangeNameMail extends Activity implements CambiarNomMail {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == android.R.id.home) {
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

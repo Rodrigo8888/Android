@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +18,7 @@ import com.example.rpcosta.ejercicio4.DataBase.DBHelper;
 import com.example.rpcosta.ejercicio4.R;
 import com.example.rpcosta.ejercicio4.Services.MyService;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.squareup.picasso.Picasso;
 
 
 public class MyActivity extends Activity {
@@ -28,53 +31,84 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        Picasso.with(this).setIndicatorsEnabled(true);
         DBHelper helper = OpenHelperManager.getHelper(this, DBHelper.class);
         helper.createDB();
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
-        /*Map<String,?> keys = prefs.getAll();
-        for(Map.Entry<String,?> entry : keys.entrySet()){
-                    entry.getValue().toString());
-        }*/
         String busqueda = prefs.getString(Cquery, null);
         query = (EditText) findViewById(R.id.editText1);
-        if (busqueda != null) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(query.getWindowToken(), 0);
+        query.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN
+                        && keyEvent.getKeyCode() ==       KeyEvent.KEYCODE_ENTER) {
+
+                    return false;
+                }
+                else if(keyEvent.getAction() == KeyEvent.ACTION_DOWN
+                        && keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK){
+
+                }
+                return false;
+            }
+        });
+
+        if (busqueda != null)
+
+        {
             String search = busqueda.replace("%20", " ");
             query.setText(search);
         }
-        buscar = (Button) findViewById(R.id.button1);
-        buscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isnumeric = true;
-                try {
-                    int num = Integer.parseInt(query.getText().toString());
-                } catch (NumberFormatException e) {
-                    isnumeric = false;
 
-                }
-                if (query.getText().toString().isEmpty() || isnumeric) {
-                    if (isnumeric) {
-                        Toast msj = Toast.makeText(MyActivity.this, "La busqueda no puede ser numérica", Toast.LENGTH_SHORT);
-                        msj.show();
-                    } else {
-                        Toast msj = Toast.makeText(MyActivity.this, "El campo no puede estar vacío", Toast.LENGTH_SHORT);
-                        msj.show();
-                    }
-                } else {
-                    String busqueda = query.getText().toString();
-                    String input = busqueda.replace(" ", "%20");
-                    editor.putString(Cquery, input);
-                    editor.commit();
-                    Intent i = new Intent(MyActivity.this, MyActivity2.class);
-                    i.putExtra(Cquery, input);
-                    startActivity(i);
+        buscar = (Button)
 
-                }
-            }
-        });
-        if (!isMyServiceRunning()) {
-            Intent intent=new Intent(MyActivity.this,MyService.class);
+                findViewById(R.id.button1);
+
+        buscar.setOnClickListener(new View.OnClickListener()
+
+                                  {
+                                      @Override
+                                      public void onClick(View v) {
+                                          isnumeric = true;
+                                          try {
+                                              int num = Integer.parseInt(query.getText().toString());
+                                          } catch (NumberFormatException e) {
+                                              isnumeric = false;
+
+                                          }
+                                          if (query.getText().toString().isEmpty() || isnumeric) {
+                                              if (isnumeric) {
+                                                  Toast msj = Toast.makeText(MyActivity.this, "La busqueda no puede ser numérica", Toast.LENGTH_SHORT);
+                                                  msj.show();
+                                              } else {
+                                                  Toast msj = Toast.makeText(MyActivity.this, "El campo no puede estar vacío", Toast.LENGTH_SHORT);
+                                                  msj.show();
+                                              }
+                                          } else {
+                                              String busqueda = query.getText().toString();
+                                              String input = busqueda.replace(" ", "%20");
+                                              editor.putString(Cquery, input);
+                                              editor.commit();
+                                              Intent i = new Intent(MyActivity.this, MyActivity2.class);
+                                              i.putExtra(Cquery, input);
+                                              startActivity(i);
+
+                                          }
+                                      }
+                                  }
+
+        );
+        if (!
+
+                isMyServiceRunning()
+
+                )
+
+        {
+            Intent intent = new Intent(MyActivity.this, MyService.class);
             startService(intent);
         }
 

@@ -2,63 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rpcosta.obligatorio1" >
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/cerebrotes"
-        android:theme="@style/AppTheme"
-            android:label="@android:string/nombreApp">
-        <activity
-            android:name=".MyActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".VentanaRegistroNombre" >
-        </activity>
-        <activity
-            android:name=".VentanaRegistroMail" >
-        </activity>
-        <activity
-            android:name=".VentanaRegistroPassword" >
-        </activity>
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-        <activity
-            android:name=".VentanaInicio"
-            android:label="@string/nombreApp" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".VentanaDesafios" >
-        </activity>
-        <activity
-            android:name=".MiPerfil" >
-        </activity>
-        <activity
-            android:name=".OlvidoPass" >
-        </activity>
-        <activity
-            android:name=".EditarDatos" >
-        </activity>
-        <activity
-            android:name=".ChangeNameMail" >
-        </activity>
-        <activity
-            android:name=".DesafioIndividual" >
-        </activity>
-        <activity
-            android:name=".Arte" >
-        </activity>
-        <activity
-            android:name=".Preguntas" >
-        </activity>
-    </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -74,5 +17,115 @@
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/cerebrotes"
+        android:label="@string/nombreApp"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MyActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".VentanaRegistroNombre"
+            android:label="@string/registro" >
+        </activity>
+        <activity
+            android:name=".VentanaRegistroMail"
+            android:label="@string/registro" >
+        </activity>
+        <activity
+            android:name=".VentanaRegistroPassword"
+            android:label="@string/registro" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".VentanaInicio" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VentanaDesafios" android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".MiPerfil" android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".OlvidoPass" >
+        </activity>
+        <activity android:name=".EditarDatos" >
+        </activity>
+        <activity android:name=".ChangeNameMail" >
+        </activity>
+        <activity
+            android:name=".DesafioIndividual"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Arte"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity android:name=".Preguntas" >
+        </activity>
+        <activity
+            android:name=".Geografia"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name=".Ciencia"
+            android:label="@string/title_activity_ciencia"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name=".Historia"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name=".Deporte"
+            android:label="@string/title_activity_deporte"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name=".Entretenimiento"
+            android:label="@string/title_activity_entretenimiento"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name=".ResultadoPreguntas"
+            android:label="@string/title_activity_resultado_preguntas"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name=".ElegirDesafio"
+            android:label="@string/title_activity_elegir_desafio"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service android:name=".Services.MyService" />
+
+        <receiver android:name=".MyReceiver" />
+
+        <activity
+            android:name=".ElegirCategoria"
+            android:label="@string/title_activity_elegir_categoria" android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".JugadorVersus"
+            android:label="@string/title_activity_jugador_versus" >
+        </activity>
+    </application>
 
 </manifest>

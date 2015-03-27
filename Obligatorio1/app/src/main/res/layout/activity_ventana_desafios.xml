@@ -37,7 +37,7 @@
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_marginTop="60dp"
-            android:background="@drawable/roundedlayout1"
+            android:background="@android:color/white"
             android:layout_below="@+id/layout7"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -71,10 +71,10 @@
             android:layout_alignParentStart="true">
 
         <ImageView
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/cerebrotes1"
+                android:background="@drawable/cerebrotes2"
                 android:id="@+id/imageView"
                 android:layout_gravity="center_horizontal"/>
     </LinearLayout>

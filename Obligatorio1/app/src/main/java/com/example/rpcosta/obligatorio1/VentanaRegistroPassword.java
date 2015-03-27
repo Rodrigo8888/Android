@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.rpcosta.obligatorio1.AsyncTask.RegistroUsuario;
-import com.example.rpcosta.obligatorio1.Interfaces.RegUsuario;
+import AsyncTask.RegistroUsuario;
+import Interfaces.RegUsuario;
 
 
 public class VentanaRegistroPassword extends Activity implements RegUsuario {
@@ -30,7 +30,7 @@ public class VentanaRegistroPassword extends Activity implements RegUsuario {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_registro_password);
         pass = (EditText) findViewById(R.id.editText);
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle b = getIntent().getExtras();
         nombre = b.getString("Nombre");
         mail = b.getString("Mail");
@@ -68,30 +68,33 @@ public class VentanaRegistroPassword extends Activity implements RegUsuario {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
         }
+        return super.onOptionsItemSelected(item);
     }
+
+
 
     @Override
     public void onBackPressed() {
+        Intent i = new Intent(VentanaRegistroPassword.this,MyActivity.class);
+        startActivity(i);
         finish();
     }
 
     @Override
     public void result(Boolean results, String id) {
         if(results) {
-            Intent i = new Intent(VentanaRegistroPassword.this, MiPerfil.class);
+            Intent i = new Intent(getApplicationContext(), MiPerfil.class);
+            startActivity(i);
             i.putExtra("name", nombre);
             i.putExtra("id", id);
             i.putExtra("mail", mail);
             startActivity(i);
             finish();
+
         }
         else {
             error = getResources().getString(R.string.errorLogin);

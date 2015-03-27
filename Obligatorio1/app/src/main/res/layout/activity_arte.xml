@@ -2,17 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="#BB000000"
     tools:context="com.example.rpcosta.obligatorio1.Arte">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             android:text="@string/arte"
-            android:id="@+id/textView" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-            android:layout_marginTop="38dp"/>
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
     <ImageView
             android:layout_width="300dp"
             android:layout_height="300dp"

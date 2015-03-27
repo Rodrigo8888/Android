@@ -2,15 +2,34 @@
 <resources>
 
     <string name="app_name">Obligatorio1</string>
-    <string name="hello_world">Hello world!</string>
     <string name="Usuario">E-mail</string>
+    <string name="camara">Camera</string>
+    <string name="galery">Galery</string>
+    <string name="choose_camera">Choose an option</string>
+    <string name="jugar">Play</string>
     <string name="errorLogin">Wrong mail / password</string>
     <string name="boton">Login</string>
+    <string name="arte">Art category</string>
+    <string name="desafiando">Challenging player</string>
+    <string name="actualizando">Charging</string>
     <string name="nombre">Name</string>
     <string name="nuevaPartida">New Game</string>
+    <string name="nuevo_desafio">New Challenge!</string>
     <string name="nombreApp">Brainers</string>
     <string name="cambiarnombremail">Enter you new name and email</string>
     <string name="chat">Chat</string>
+    <string name="already_chalenged">User already challenged</string>
+    <string name="limite_desafio">You already have five pending challenges</string>
+    <string name="turn">Its your turn</string>
+    <string name="search">Search</string>
+    <string name="buscar_jugador">Search player</string>
+    <string name="time">Time</string>
+    <string name="wronganswer">INCORRECT!</string>
+    <string name="geo">Geography category</string>
+    <string name="his">History category</string>
+    <string name="dep">Sports category</string>
+    <string name="cie">Science category</string>
+    <string name="ent">Entertainment category</string>
     <string name="Ingresocontraseña">Enter your Password</string>
     <string name="estadisticas">Statistics</string>
     <string name="desempeño">Performance</string>
@@ -19,6 +38,10 @@
     <string name="desempeñocategoria">Performance for category</string>
     <string name="contraseña1">This is the Password you will use for login</string>
     <string name="continuar">Continue</string>
+    <string name="result">Challenge result!</string>
+    <string name="loose">You lost against:</string>
+    <string name="win">You won against:</string>
+    <string name="draw">Challenge draw with:</string>
     <string name="changepass">Change password</string>
     <string name="newpass">Enter you new password</string>
     <string name="registro">Register</string>
@@ -29,6 +52,7 @@
     <string name="cambioPass">Change successfully</string>
     <string name="finalizar">Done</string>
     <string name="bienvenido">Welcome!</string>
+    <string name="correctanswer">CORRECT!</string>
     <string name="correo">Enter your email address</string>
     <string name="correo1">You will use this email address when you login \n and if you ever have to change the \n
         password </string>
@@ -54,5 +78,19 @@
     <string name="title_activity_desafio_individual">DesafioIndividual</string>
     <string name="title_activity_arte">Arte</string>
     <string name="title_activity_preguntas">Preguntas</string>
+    <string name="title_activity_geografia">Geografia</string>
+    <string name="title_activity_ciencia">Ciencia</string>
+    <string name="title_activity_historia">Historia</string>
+    <string name="title_activity_deporte">Deporte</string>
+    <string name="title_activity_entretenimiento">Entretenimiento</string>
+    <string name="title_activity_resultado_preguntas">ResultadoPreguntas</string>
+    <string name="title_activity_elegir_desafio">ElegirDesafio</string>
+    <string name="random">Random</string>
+    <string name="choose_category">Choose category</string>
+    <string name="title_activity_elegir_categoria">ElegirCategoria</string>
+    <string name="select_pic">Select picture</string>
+    <string name="title_activity_desafio_versus">DesafioVersus</string>
+    <string name="title_activity_jugador_versus">JugadorVersus</string>
+    <string name="title_activity_cerrar_versus">CerrarVersus</string>
 
 </resources>

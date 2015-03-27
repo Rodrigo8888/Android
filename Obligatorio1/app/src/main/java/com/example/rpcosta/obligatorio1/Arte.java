@@ -1,6 +1,7 @@
 package com.example.rpcosta.obligatorio1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,15 +11,35 @@ import android.widget.Button;
 
 public class Arte extends Activity {
     private Button jugar;
+    private Desafios desafio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arte);
-        jugar = (Button)findViewById(R.id.button2);
+        Bundle b = getIntent().getExtras();
+        final String id = b.getString("id");
+        final String idU = b.getString("idUser");
+        final String tipo = b.getString("tipo");
+        final String versus = b.getString("versus");
+        final String challenge = b.getString("idChallenge");
+        desafio = (Desafios) b.getSerializable("desafio");
+        jugar = (Button) findViewById(R.id.button2);
         jugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Llamar a las preguntas, traer la pregunta y comenzar el conteo del tiempo, pasando a la actyvity preguntas que se encargue de mostrar las preguntas
+                Intent i = new Intent(Arte.this, Preguntas.class);
+                i.putExtra("id", id);
+                i.putExtra("idUser", idU);
+                if (versus != null) {
+                    i.putExtra("versus", versus);
+                    i.putExtra("idChallenge", challenge);
+                }
+                if (desafio != null) {
+                    i.putExtra("desafio", desafio);
+                }
+                i.putExtra("tipo", tipo);
+                startActivity(i);
             }
         });
     }
@@ -41,5 +62,10 @@ public class Arte extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

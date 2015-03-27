@@ -13,14 +13,14 @@
                   android:paddingTop="10dp"
                   android:paddingLeft="10dp"
                   android:orientation="vertical"
-                  android:id="@+id/layout2">
+                  android:id="@+id/layout2" android:weightSum="1">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="292dp"
+                android:layout_height="322dp"
                 android:id="@+id/imageView"
-                android:background="@drawable/cerebrote3"
-                android:layout_gravity="center_horizontal"/>
+                android:background="@drawable/cerebrotes2"
+                android:layout_gravity="center_horizontal" android:layout_weight="0.24"/>
 
         <ProgressBar
                 android:layout_marginLeft="10dp"
